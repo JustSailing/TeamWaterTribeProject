@@ -1,0 +1,141 @@
+<div class="todo-page">
+  <h1>TODO LIST</h1>
+
+  <!-- Add / Edit bar -->
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div class="add-box">
+      <input
+        id="task"
+        type="text"
+        formControlName="task"
+        autocomplete="off"
+        [placeholder]="editingTodoId() !== null ? 'Edit task...' : 'Enter todo'"
+      />
+      <button type="submit" [disabled]="todoForm.invalid">
+        {{ editingTodoId() !== null ? '✓' : '+' }}
+      </button>
+      @if (editingTodoId() !== null) {
+        <button type="button" class="btn-cancel" (click)="cancelEdit()">✕</button>
+      }
+    </div>
+
+    @if (todoForm.controls.task.invalid && todoForm.controls.task.touched) {
+      <p class="error-message" role="alert">Task is required (max 255 chars).</p>
+    }
+  </form>
+
+  @if (errorMessage()) {
+    <p class="error-message" role="alert">{{ errorMessage() }}</p>
+  }
+
+  <!-- Todo list -->
+  <div class="todo-list">
+    @if (todos().length === 0) {
+      <p class="empty-state">No todos yet. Add one above!</p>
+    }
+
+    @for (todo of todos(); track todo.id) {
+      <div class="todo-item-wrapper">
+        <!-- Main todo row -->
+        <div class="todo-item" [class.todo-done]="todo.completed" [class.todo-expanded]="expandedTodoId() === todo.id">
+          <input
+            type="checkbox"
+            class="todo-checkbox"
+            [checked]="todo.completed"
+            (change)="toggleComplete(todo)"
+            [attr.aria-label]="'Mark ' + todo.task + ' complete'"
+          />
+
+          <div class="todo-text">
+            <span class="todo-task" [class.strikethrough]="todo.completed">{{ todo.task }}</span>
+            @if (todo.description) {
+              <span class="todo-desc">{{ todo.description }}</span>
+            }
+          </div>
+
+          <div class="todo-actions">
+            <button
+              type="button"
+              class="btn-expand"
+              (click)="toggleSubTodos(todo)"
+              [attr.aria-label]="expandedTodoId() === todo.id ? 'Collapse subtasks' : 'Expand subtasks'"
+              [title]="expandedTodoId() === todo.id ? 'Hide subtasks' : 'Show subtasks'"
+            >
+              {{ expandedTodoId() === todo.id ? '▼' : '▶' }}
+            </button>
+            <button type="button" class="btn-edit"   (click)="editTodo(todo)"      title="Edit">✏️</button>
+            <button type="button" class="btn-delete" (click)="deleteTodo(todo.id)" title="Delete">🗑️</button>
+          </div>
+        </div>
+
+        @if (expandedTodoId() === todo.id) {
+          <div class="subtodo-panel">
+            @if (subtodoError()) {
+              <p class="error-message" role="alert">{{ subtodoError() }}</p>
+            }
+
+            @if (subtodoLoading()) {
+              <p class="subtodo-loading">Loading subtasks…</p>
+            } @else {
+              <div class="subtodo-list">
+                @if (subtodos().length === 0) {
+                  <p class="subtodo-empty">No subtasks yet.</p>
+                }
+
+                @for (sub of subtodos(); track sub.id) {
+                  <div class="subtodo-item" [class.subtodo-done]="sub.completed">
+                    @if (editingSubTodoId() === sub.id) {
+                      <input
+                        class="subtodo-edit-input"
+                        type="text"
+                        [value]="editingSubTodoTask()"
+                        (input)="editingSubTodoTask.set($any($event.target).value)"
+                        (keyup.enter)="saveSubTodoEdit(todo.id, sub.id)"
+                        (keyup.escape)="cancelSubTodoEdit()"
+                        autocomplete="off"
+                      />
+                      <button type="button" class="btn-subtodo-save"   (click)="saveSubTodoEdit(todo.id, sub.id)" title="Save">✓</button>
+                      <button type="button" class="btn-subtodo-cancel" (click)="cancelSubTodoEdit()"              title="Cancel">✕</button>
+                    } @else {
+                      <input
+                        type="checkbox"
+                        class="subtodo-checkbox"
+                        [checked]="sub.completed"
+                        (change)="toggleSubTodoComplete(todo.id, sub)"
+                        [attr.aria-label]="'Mark ' + sub.task + ' complete'"
+                      />
+                      <span class="subtodo-task" [class.strikethrough]="sub.completed">{{ sub.task }}</span>
+                      <div class="subtodo-actions">
+                        <button type="button" class="btn-edit"   (click)="startEditSubTodo(sub)"           title="Edit subtask">✏️</button>
+                        <button type="button" class="btn-delete" (click)="deleteSubTodo(todo.id, sub.id)"  title="Delete subtask">🗑️</button>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="subtodo-add">
+                <input
+                  class="subtodo-input"
+                  type="text"
+                  placeholder="Add subtask…"
+                  [value]="newSubTodoTask()"
+                  (input)="newSubTodoTask.set($any($event.target).value)"
+                  (keyup.enter)="addSubTodo(todo.id)"
+                  autocomplete="off"
+                />
+                <button
+                  type="button"
+                  class="btn-subtodo-add"
+                  (click)="addSubTodo(todo.id)"
+                  [disabled]="!newSubTodoTask().trim()"
+                  title="Add subtask"
+                >+</button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

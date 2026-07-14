@@ -1,0 +1,18 @@
+# Gradle and build artifacts
+.gradle/
+build/
+out/
+
+# IDE files (IntelliJ, Android Studio, VS Code)
+.idea/
+*.iml
+.vscode/
+
+# Local configuration and logs
+.local/
+*.log
+local.properties
+
+# OS generated files
+.DS_Store
+todo.db

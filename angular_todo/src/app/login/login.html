@@ -1,0 +1,27 @@
+<div class="auth-page" aria-labelledby="login-heading">
+  <div class="left-panel"></div>
+
+  <div class="form-panel">
+  <h1 id="login-heading">Welcome! Please Login.</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" type="text" autocomplete="username" formControlName="username" />
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" formControlName="password" />
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+
+  @if (errorMessage()) {
+    <p role="alert" class="error-message">{{ errorMessage() }}</p>
+  }
+
+  <p class="auth-link">Don't have an account? <a routerLink="/register">Register here</a></p>
+  </div>
+</div>

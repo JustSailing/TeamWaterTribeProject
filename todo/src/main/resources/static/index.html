@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            padding: 32px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .add-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .add-row input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #c0a0f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .add-row input:focus {
+            border-color: #7c3aed;
+        }
+
+        .btn-add {
+            background: #7c3aed;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            width: 42px;
+            height: 42px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-add:hover {
+            background: #6d28d9;
+        }
+
+        .todo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .todo-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 4px;
+        }
+
+        .todo-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .todo-checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: #7c3aed;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .todo-text {
+            flex: 1;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .todo-text.completed {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+
+        .todo-text-input {
+            flex: 1;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 1px solid #c0a0f0;
+            border-radius: 4px;
+            padding: 4px 8px;
+            outline: none;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 4px;
+            color: #374151;
+            flex-shrink: 0;
+        }
+
+        .btn-icon:hover {
+            color: #7c3aed;
+        }
+
+        .btn-delete:hover {
+            color: #dc2626;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.95rem;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TODO LIST</h1>
+
+        <div id="error-msg" class="error-msg" style="display:none;"></div>
+
+        <div class="add-row">
+            <input type="text" id="new-todo-input" placeholder="Add a new todo..." />
+            <button class="btn-add" onclick="createTodo()">+</button>
+        </div>
+
+        <div class="todo-list" id="todo-list">
+            <p class="empty-msg">Loading...</p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080/api/main-todos';
+
+        // Prompt for credentials once and store as Basic Auth header
+        function getAuthHeader() {
+            let creds = sessionStorage.getItem('auth');
+            if (!creds) {
+                const email = prompt('Enter your email:');
+                const password = prompt('Enter your password:');
+                creds = btoa(email + ':' + password);
+                sessionStorage.setItem('auth', creds);
+            }
+            return 'Basic ' + creds;
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error-msg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 4000);
+        }
+
+        async function apiFetch(url, options = {}) {
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': getAuthHeader(),
+                ...(options.headers || {})
+            };
+            const res = await fetch(url, { ...options, headers });
+            if (res.status === 401) {
+                sessionStorage.removeItem('auth');
+                showError('Unauthorized. Please refresh and enter valid credentials.');
+                throw new Error('Unauthorized');
+            }
+            return res;
+        }
+
+        async function loadTodos() {
+            try {
+                const res = await apiFetch(API_BASE);
+                const todos = await res.json();
+                renderTodos(todos);
+            } catch (e) {
+                if (e.message !== 'Unauthorized') showError('Failed to load todos.');
+            }
+        }
+
+        function renderTodos(todos) {
+            const list = document.getElementById('todo-list');
+            if (!todos || todos.length === 0) {
+                list.innerHTML = '<p class="empty-msg">No todos yet. Add one above!</p>';
+                return;
+            }
+            list.innerHTML = '';
+            todos.forEach(todo => {
+                list.appendChild(buildTodoItem(todo));
+            });
+        }
+
+        function buildTodoItem(todo) {
+            const item = document.createElement('div');
+            item.className = 'todo-item';
+            item.dataset.id = todo.id;
+
+            const row = document.createElement('div');
+            row.className = 'todo-row';
+
+            // Checkbox for completed toggle
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'todo-checkbox';
+            checkbox.checked = todo.completed;
+            checkbox.onchange = () => toggleComplete(todo, checkbox.checked, textEl, editInput);
+
+            // Display text
+            const textEl = document.createElement('span');
+            textEl.className = 'todo-text' + (todo.completed ? ' completed' : '');
+            textEl.textContent = todo.task;
+
+            // Edit input (hidden by default)
+            const editInput = document.createElement('input');
+            editInput.type = 'text';
+            editInput.className = 'todo-text-input';
+            editInput.value = todo.task;
+            editInput.style.display = 'none';
+            editInput.onkeydown = (e) => {
+                if (e.key === 'Enter') saveEdit(todo, editInput, textEl, editBtn);
+                if (e.key === 'Escape') cancelEdit(textEl, editInput, editBtn);
+            };
+
+            // Edit button
+            const editBtn = document.createElement('button');
+            editBtn.className = 'btn-icon';
+            editBtn.title = 'Edit';
+            editBtn.textContent = '✏️';
+            editBtn.onclick = () => startEdit(textEl, editInput, editBtn, todo, checkbox);
+
+            // Delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'btn-icon btn-delete';
+            deleteBtn.title = 'Delete';
+            deleteBtn.textContent = '🗑️';
+            deleteBtn.onclick = () => deleteTodo(todo.id, item);
+
+            row.appendChild(checkbox);
+            row.appendChild(textEl);
+            row.appendChild(editInput);
+            row.appendChild(editBtn);
+            row.appendChild(deleteBtn);
+            item.appendChild(row);
+            return item;
+        }
+
+        function startEdit(textEl, editInput, editBtn, todo, checkbox) {
+            textEl.style.display = 'none';
+            editInput.style.display = 'block';
+            editInput.focus();
+            editBtn.textContent = '💾';
+            editBtn.onclick = () => saveEdit(todo, editInput, textEl, editBtn);
+            checkbox.disabled = true;
+        }
+
+        function cancelEdit(textEl, editInput, editBtn) {
+            textEl.style.display = 'block';
+            editInput.style.display = 'none';
+            editInput.value = textEl.textContent;
+            editBtn.textContent = '✏️';
+        }
+
+        async function saveEdit(todo, editInput, textEl, editBtn) {
+            const newTask = editInput.value.trim();
+            if (!newTask) { showError('Task cannot be empty.'); return; }
+            try {
+                const res = await apiFetch(`${API_BASE}/${todo.id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ task: newTask, description: todo.description, completed: todo.completed })
+                });
+                const updated = await res.json();
+                textEl.textContent = updated.task;
+                textEl.className = 'todo-text' + (updated.completed ? ' completed' : '');
+                textEl.style.display = 'block';
+                editInput.style.display = 'none';
+                editBtn.textContent = '✏️';
+                editBtn.onclick = () => startEdit(textEl, editInput, editBtn, updated, null);
+                // Refresh to get updated todo reference
+                loadTodos();
+            } catch (e) {
+                if (e.message !== 'Unauthorized') showError('Failed to update todo.');
+            }
+        }
+
+        async function toggleComplete(todo, completed, textEl, editInput) {
+            try {
+                await apiFetch(`${API_BASE}/${todo.id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ task: todo.task, description: todo.description, completed })
+                });
+                textEl.className = 'todo-text' + (completed ? ' completed' : '');
+                todo.completed = completed;
+            } catch (e) {
+                if (e.message !== 'Unauthorized') showError('Failed to update todo.');
+            }
+        }
+
+        async function deleteTodo(id, itemEl) {
+            try {
+                await apiFetch(`${API_BASE}/${id}`, { method: 'DELETE' });
+                itemEl.remove();
+                if (document.getElementById('todo-list').children.length === 0) {
+                    document.getElementById('todo-list').innerHTML = '<p class="empty-msg">No todos yet. Add one above!</p>';
+                }
+            } catch (e) {
+                if (e.message !== 'Unauthorized') showError('Failed to delete todo.');
+            }
+        }
+
+        async function createTodo() {
+            const input = document.getElementById('new-todo-input');
+            const task = input.value.trim();
+            if (!task) { showError('Please enter a task.'); return; }
+            try {
+                const res = await apiFetch(API_BASE, {
+                    method: 'POST',
+                    body: JSON.stringify({ task, description: '', completed: false })
+                });
+                const created = await res.json();
+                input.value = '';
+                const list = document.getElementById('todo-list');
+                const emptyMsg = list.querySelector('.empty-msg');
+                if (emptyMsg) emptyMsg.remove();
+                list.appendChild(buildTodoItem(created));
+            } catch (e) {
+                if (e.message !== 'Unauthorized') showError('Failed to create todo.');
+            }
+        }
+
+        // Allow Enter key on the add input
+        document.getElementById('new-todo-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') createTodo();
+        });
+
+        // Load todos on page open
+        loadTodos();
+    </script>
+</body>
+</html>

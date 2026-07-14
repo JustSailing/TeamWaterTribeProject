@@ -1,0 +1,329 @@
+.todo-page {
+  text-align: center;
+  padding: 48px 16px;
+  font-family: Arial, sans-serif;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px gray;
+  margin-bottom: 40px;
+}
+
+/* ── Add / Edit bar ── */
+.add-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.add-box input {
+  width: 420px;
+  height: 45px;
+  border: 3px solid #7b22ff;
+  font-size: 18px;
+  padding: 0 12px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-box input:focus {
+  border-color: #5a00dd;
+}
+
+.add-box button[type="submit"] {
+  width: 55px;
+  height: 55px;
+  background-color: #7b22ff;
+  color: white;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-box button[type="submit"]:hover:not(:disabled) {
+  background-color: #6010dd;
+}
+
+.add-box button[type="submit"]:disabled {
+  background-color: #b794f4;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  width: 45px;
+  height: 45px;
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #d1d5db;
+}
+
+/* ── Error ── */
+.error-message {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin: 6px 0 12px;
+  text-align: center;
+}
+
+/* ── Todo list ── */
+.todo-list {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+  padding: 24px 0;
+  font-size: 0.95rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s;
+}
+
+.todo-item:hover {
+  box-shadow: 0 2px 10px rgba(123, 34, 255, 0.1);
+}
+
+.todo-done {
+  opacity: 0.65;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #7b22ff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.todo-task {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.todo-desc {
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.btn-edit,
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.15s;
+  width: auto;
+  height: auto;
+}
+
+.btn-edit:hover   { background: #f3f0ff; }
+.btn-delete:hover { background: #fff1f1; }
+
+.btn-expand {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #7b22ff;
+  transition: background 0.15s;
+  width: auto;
+  height: auto;
+}
+
+.btn-expand:hover {
+  background: #f3f0ff;
+}
+
+.todo-expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: #e9d5ff;
+}
+
+/* ── Subtodo panel ── */
+.todo-item-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtodo-panel {
+  background: #faf5ff;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px 16px 12px;
+  box-shadow: 0 2px 6px rgba(123, 34, 255, 0.07);
+}
+
+.subtodo-loading,
+.subtodo-empty {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  padding: 4px 0 8px;
+}
+
+.subtodo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.subtodo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #ede9fe;
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.subtodo-done .subtodo-task {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.subtodo-task {
+  flex: 1;
+  color: #1f2937;
+}
+
+.subtodo-actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.subtodo-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #7b22ff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.subtodo-edit-input {
+  flex: 1;
+  border: 1px solid #7b22ff;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.btn-subtodo-save,
+.btn-subtodo-cancel {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.btn-subtodo-save:hover   { background: #ecfdf5; color: #059669; }
+.btn-subtodo-cancel:hover { background: #fff1f1; color: #ef4444; }
+
+/* ── Add subtodo row ── */
+.subtodo-add {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.subtodo-input {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #c4b5fd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.subtodo-input:focus {
+  border-color: #7b22ff;
+}
+
+.btn-subtodo-add {
+  width: 34px;
+  height: 34px;
+  background-color: #7b22ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-subtodo-add:hover:not(:disabled) {
+  background-color: #6010dd;
+}
+
+.btn-subtodo-add:disabled {
+  background-color: #b794f4;
+  cursor: not-allowed;
+}

@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: #7b22ff;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Content area ── */
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

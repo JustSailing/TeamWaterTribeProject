@@ -1,0 +1,60 @@
+<div class="auth-page" aria-labelledby="register-heading">
+  <div class="left-panel"></div>
+
+  <div class="form-panel">
+  <h1 id="register-heading">Register</h1>
+
+    <!-- 
+       [formGroup]="registerForm" is a property binding that connects this <form> element
+       to the FormGroup instance in the component class. This enables Angular's reactive
+       forms features (value tracking, validation, etc.) on this form.
+       (ngSubmit)="onSubmit()" is an event binding that calls onSubmit() when the form
+       is submitted (button click or Enter key). Angular prevents the default browser
+       submission so the page doesn't reload. 
+    -->
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">Email</label>
+        <!-- 
+           formControlName="username" links this input to the 'username' FormControl
+           inside the parent FormGroup. Angular syncs the input's value with the control
+           automatically (two-way binding managed internally by ReactiveFormsModule). 
+
+           NOTE: the autocomplete attribute is not Angular specific: it is used by the browser to suggest
+                 values for the input field
+        -->
+      <input id="email" type="text" autocomplete="email" formControlName="email" />
+    </div>
+    <div>
+      <label for="username">Username</label>
+        <!-- 
+           formControlName="username" links this input to the 'username' FormControl
+           inside the parent FormGroup. Angular syncs the input's value with the control
+           automatically (two-way binding managed internally by ReactiveFormsModule). 
+
+           NOTE: the autocomplete attribute is not Angular specific: it is used by the browser to suggest
+                 values for the input field
+        -->
+      <input id="username" type="text" autocomplete="username" formControlName="username" />
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <!-- formControlName="password" links this input to the 'password' FormControl. -->
+      <input id="password" type="password" autocomplete="new-password" formControlName="password" />
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+    @if (successMessage()) {
+        <p role="status" class="success-message">{{ successMessage() }}</p>
+    }
+
+    @if (errorMessage()) {
+        <p role="alert" class="error-message">{{ errorMessage() }}</p>
+    }
+
+  <p class="auth-link">Already have an account? <a routerLink="/login">Login here</a></p>
+  </div>
+  </div>
