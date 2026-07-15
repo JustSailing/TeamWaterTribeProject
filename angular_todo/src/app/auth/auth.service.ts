@@ -1,6 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http.post(
-      'http://localhost:8080/login',
+      `${environment.apiUrl}/login`,
       { username, password },
       { responseType: 'text' },
     );

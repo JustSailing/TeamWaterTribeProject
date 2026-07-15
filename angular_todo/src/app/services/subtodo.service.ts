@@ -2,13 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SubTodo } from '../models/subtodo.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubTodoService {
 
-  private readonly apiUrl = 'http://localhost:8080/api/main-todos';
+  private readonly apiUrl = `${environment.apiUrl}/api/main-todos`;
   private http = inject(HttpClient);
 
   getAllSubTodos(parent_id: number): Observable<SubTodo[]> {

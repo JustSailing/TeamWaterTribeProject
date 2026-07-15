@@ -2,13 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MainTodo } from '../models/maintodo.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainTodoService {
 
-  private apiUrl = 'http://localhost:8080/api/main-todos';
+  private apiUrl = `${environment.apiUrl}/api/main-todos`;
 
   constructor(private http: HttpClient) {}
 

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -52,7 +53,7 @@ export class Register {
     //              rather than just the parsed body
     //     responseType: 'text' tells Angular to treat the response body as plain text
     //                   instead of attempting to parse it as JSON
-    this.http.post('http://localhost:8080/register', body, { responseType: 'text' }).subscribe({
+    this.http.post(`${environment.apiUrl}/register`, body, { responseType: 'text' }).subscribe({
       next: () => {
         this.successMessage.set('Registration successful!');
         setTimeout(() => {
