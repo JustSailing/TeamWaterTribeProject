@@ -10,12 +10,10 @@ pipeline {
         FRONTEND_DIRECTORY = 'angular_todo'
         FRONTEND_URL = 'http://localhost:4200/login'
 
-        /*
         AWS_REGION = 'us-east-1'
         S3_BUCKET = 'water-tribe-angular-app'
         EC2_HOST = '18.209.57.58'
         EC2_USER = 'ec2-user'
-        */
     }
 
     options {
@@ -188,19 +186,45 @@ pipeline {
             }
         }
 
-        /*
         stage('Deploy Frontend to S3') {
             steps {
-                // Deployment disabled for now
+                echo 'Deploying Angular frontend to S3...'
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'aws-credentials',
+                        usernameVariable: 'AWS_ACCESS_KEY_ID',
+                        passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+                    )
+                ]) {
+                    bat '''
+                        aws s3 sync ^
+                        angular_todo\\dist\\angular_todo ^
+                        s3://%S3_BUCKET% ^
+                        --delete ^
+                        --region %AWS_REGION%
+                    '''
+                }
             }
         }
 
         stage('Deploy Backend to EC2') {
             steps {
-                // Deployment disabled for now
+                echo 'Deploying Spring Boot backend to EC2...'
+
+                sshagent(credentials: ['ec2-ssh-key']) {
+                    bat '''
+                        scp -o StrictHostKeyChecking=no ^
+                        todo\\build\\libs\\todo-0.0.1-SNAPSHOT.jar ^
+                        %EC2_USER%@%EC2_HOST%:/home/%EC2_USER%/todo.jar
+
+                        ssh -o StrictHostKeyChecking=no ^
+                        %EC2_USER%@%EC2_HOST% ^
+                        "pkill -f todo.jar || true; nohup java -jar /home/%EC2_USER%/todo.jar > /home/%EC2_USER%/todo.log 2>&1 &"
+                    '''
+                }
             }
         }
-        */
     }
 
     post {
