@@ -21,9 +21,10 @@ public class DriverManager {
     @ScenarioScope
     public WebDriver getDriver() {
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless=new");
+        options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1280,800"); 
         return new ChromeDriver(options);
     }
