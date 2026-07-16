@@ -87,34 +87,27 @@ pipeline {
                 echo 'Starting Angular frontend on port 4200...'
 
                 dir("${FRONTEND_DIRECTORY}") {
-                    powershell '''
-                        $process = Start-Process `
-                            -FilePath "cmd.exe" `
-                            -ArgumentList "/c", "npm start -- --host 127.0.0.1 --port 4200" `
-                            -WorkingDirectory $PWD `
-                            -RedirectStandardOutput "frontend.log" `
-                            -RedirectStandardError "frontend-error.log" `
-                            -PassThru
-
-                        $process.Id | Out-File "frontend.pid" -Encoding ascii
-                        Write-Host "Frontend PID: $($process.Id)"
-                    '''
+                    withEnv(['JENKINS_NODE_COOKIE=dontKillFrontend']) {
+                        bat '''
+                            start "" /B cmd /C "npm start -- --host 127.0.0.1 --port 4200 > frontend.log 2>&1"
+                            timeout /T 5 /NOBREAK
+                        '''
+                    }
                 }
             }
         }
 
         stage('Wait for Frontend') {
             steps {
-                echo 'Waiting for Angular to become available...'
+                echo 'Waiting for Angular frontend...'
 
                 powershell '''
-                    $url = $env:FRONTEND_URL
-                    $maximumAttempts = 90
+                    $maximumAttempts = 60
 
                     for ($attempt = 1; $attempt -le $maximumAttempts; $attempt++) {
                         try {
                             $response = Invoke-WebRequest `
-                                -Uri $url `
+                                -Uri "http://localhost:4200/login" `
                                 -UseBasicParsing `
                                 -TimeoutSec 5 `
                                 -ErrorAction Stop
@@ -123,7 +116,7 @@ pipeline {
                             exit 0
                         }
                         catch {
-                            Write-Host "Frontend not ready. Attempt $attempt of $maximumAttempts"
+                            Write-Host "Waiting for frontend: attempt $attempt of $maximumAttempts"
                             Start-Sleep -Seconds 2
                         }
                     }
@@ -134,15 +127,11 @@ pipeline {
                         Get-Content "angular_todo\\frontend.log" -Tail 100
                     }
 
-                    if (Test-Path "angular_todo\\frontend-error.log") {
-                        Get-Content "angular_todo\\frontend-error.log" -Tail 100
-                    }
-
                     exit 1
                 '''
             }
         }
-
+        
         stage('Run All Backend Tests') {
             steps {
                 echo 'Running all backend, API, Cucumber and Selenium tests...'
