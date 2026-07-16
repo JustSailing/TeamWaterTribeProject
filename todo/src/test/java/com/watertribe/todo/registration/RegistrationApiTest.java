@@ -1,5 +1,6 @@
 package com.watertribe.todo.registration;
 
+import com.watertribe.todo.config.TestSecurityConfig;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.SubTaskRepository;
 import com.watertribe.todo.repository.UserRepository;
@@ -10,14 +11,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.DirtiesContext;
 
+import java.util.Map;
 import java.util.UUID;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@Import(TestSecurityConfig.class)
 class RegistrationApiTest {
 
     @LocalServerPort
@@ -59,10 +66,10 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, uniqueEmail(username)))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(201)
-            .body(equalTo("Registration successful!"));
+            .body("message",equalTo("Registration successful!"));
     }
 
     @Test
@@ -81,7 +88,7 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, email))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(201);
 
@@ -96,7 +103,7 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, email))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(409)
             .body(equalTo("Username already exists"));
@@ -117,7 +124,7 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, email))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(201);
 
@@ -131,7 +138,7 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, email))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(409)
             .body(equalTo("Email already exists"));
@@ -148,10 +155,10 @@ class RegistrationApiTest {
                     }
                     """)
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Username, email and password are required."));
+            .body("message",equalTo("Username, email and password are required."));
     }
 
     @Test
@@ -165,10 +172,10 @@ class RegistrationApiTest {
                     }
                     """.formatted(uniqueUsername()))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Username, email and password are required."));
+            .body("message",equalTo("Username, email and password are required."));
     }
 
     @Test
@@ -183,10 +190,10 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, uniqueEmail(username)))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Username, email and password are required."));
+            .body("message",equalTo("Username, email and password are required."));
     }
 
     @Test
@@ -201,10 +208,10 @@ class RegistrationApiTest {
                     }
                     """)
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Username, email and password are required."));
+            .body("message",equalTo("Username, email and password are required."));
     }
 
     @Test
@@ -213,10 +220,10 @@ class RegistrationApiTest {
             .contentType(ContentType.JSON)
             .body("{}")
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Username, email and password are required."));
+            .body("message",equalTo("Username, email and password are required."));
     }
 
     @Test
@@ -232,10 +239,10 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, uniqueEmail(username)))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Password must be at least 8 characters."));
+            .body("message", equalTo("Password must be at least 8 characters."));
     }
 
     @Test
@@ -251,10 +258,10 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, uniqueEmail(username)))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(400)
-            .body(equalTo("Password must be at least 8 characters."));
+            .body("message", equalTo("Password must be at least 8 characters."));
     }
 
     @Test
@@ -270,9 +277,9 @@ class RegistrationApiTest {
                     }
                     """.formatted(username, uniqueEmail(username)))
         .when()
-            .post("/register")
+            .post("/api/auth/register")
         .then()
             .statusCode(201)
-            .body(equalTo("Registration successful!"));
+            .body("message",equalTo("Registration successful!"));
     }
 }

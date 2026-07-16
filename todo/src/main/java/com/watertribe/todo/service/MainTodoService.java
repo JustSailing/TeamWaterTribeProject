@@ -4,6 +4,7 @@ import com.watertribe.todo.dto.MainTodoRequest;
 import com.watertribe.todo.dto.MainTodoResponse;
 import com.watertribe.todo.entity.MainTodo;
 import com.watertribe.todo.entity.User;
+import com.watertribe.todo.exception.ResourceNotFoundException;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +55,7 @@ public class MainTodoService {
         User user = getLoggedInUser(userId);
 
         MainTodo mainTodo = mainTodoRepository.findByIdAndUser(id, user)
-                .orElseThrow(() -> new RuntimeException("Main todo not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Main todo not found"));
 
         return mapToResponse(mainTodo);
     }
@@ -67,7 +68,7 @@ public class MainTodoService {
         User user = getLoggedInUser(userId);
 
         MainTodo mainTodo = mainTodoRepository.findByIdAndUser(id, user)
-                .orElseThrow(() -> new RuntimeException("Main todo not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Main todo not found"));
 
         mainTodo.setTask(request.getTask());
         mainTodo.setDescription(request.getDescription());
@@ -85,7 +86,7 @@ public class MainTodoService {
         User user = getLoggedInUser(userId);
 
         MainTodo mainTodo = mainTodoRepository.findByIdAndUser(id, user)
-                .orElseThrow(() -> new RuntimeException("Main todo not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Main todo not found"));
 
         mainTodoRepository.delete(mainTodo);
         mainTodoRepository.flush();
@@ -93,7 +94,7 @@ public class MainTodoService {
 
     private User getLoggedInUser(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     private MainTodoResponse mapToResponse(MainTodo mainTodo) {

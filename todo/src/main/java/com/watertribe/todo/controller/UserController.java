@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -24,7 +24,7 @@ public class UserController {
      * Throws RegistrationFailure (409) if username/email already exists — handled by GlobalExceptionHandler.
      */
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Map<String, String> body) {
+    public ResponseEntity<Map<String, String>> register(@RequestBody Map<String, String> body) {
         String username = body.get("username");
         String email    = body.get("email");
         String password = body.get("password");
@@ -32,14 +32,14 @@ public class UserController {
         if (username == null || username.isBlank() ||
             email    == null || email.isBlank()    ||
             password == null || password.isBlank()) {
-            return ResponseEntity.badRequest().body("Username, email and password are required.");
+            return ResponseEntity.badRequest().body(Map.of("message","Username, email and password are required."));
         }
         if (password.length() < 8) {
-            return ResponseEntity.badRequest().body("Password must be at least 8 characters.");
+            return ResponseEntity.badRequest().body(Map.of("message","Password must be at least 8 characters."));
         }
 
         userService.register(username, email, password);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful!");
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("message","Registration successful!"));
     }
 
     /**

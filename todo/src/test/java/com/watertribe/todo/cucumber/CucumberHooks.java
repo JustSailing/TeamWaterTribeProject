@@ -12,14 +12,17 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Central lifecycle hooks and shared Given steps for all Cucumber feature files.
+ * Central lifecycle hooks and shared Given steps for all Cucumber feature
+ * files.
  *
- * Keeping these here prevents them from being duplicated across SubTaskSteps and
+ * Keeping these here prevents them from being duplicated across SubTaskSteps
+ * and
  * MainTodoSteps (which caused them to fire twice per scenario when both classes
  * were in the same glue package).
  *
@@ -28,67 +31,65 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class CucumberHooks {
 
-    @Autowired UserService          userService;
-    @Autowired UserRepository       userRepository;
-    @Autowired MainTodoRepository   mainTodoRepository;
-    @Autowired SubTaskRepository    subTaskRepository;
+  @Autowired
+  UserService userService;
+  @Autowired
+  UserRepository userRepository;
+  @Autowired
+  MainTodoRepository mainTodoRepository;
+  @Autowired
+  SubTaskRepository subTaskRepository;
 
-    private WebDriver driver;
-    private LoginPage loginPage;
-    TodoPage          todoPage;   // package-private so step classes can share the instance if needed
+  @Autowired
+  private WebDriver driver;
+  @Autowired
+  TodoPage todoPage; // package-private so step classes can share the instance if needed
 
-    static final String USERNAME = "e2euser";
-    static final String EMAIL    = "e2e@example.com";
-    static final String PASSWORD = "password123";
+  static final String USERNAME = "e2euser";
+  static final String EMAIL = "e2e@example.com";
+  static final String PASSWORD = "password123";
 
-    @Before
-    public void setUp() {
-        subTaskRepository.deleteAll();
-        mainTodoRepository.deleteAll();
-        userRepository.deleteAll();
+  @Before
+  public void setUp() {
+    subTaskRepository.deleteAll();
+    mainTodoRepository.deleteAll();
+    userRepository.deleteAll();
+  }
 
-        driver    = DriverManager.getDriver();
-        loginPage = new LoginPage(driver);
-        todoPage  = new TodoPage(driver);
+  @After
+  public void tearDown() {
+    if (driver != null) {
+      try {
+        System.out.println("Test finished. Current URL: " + driver.getCurrentUrl());
+      } catch (Exception e) {
+        System.out.println("Browser already closed.");
+      }
     }
+  }
 
-    @After
-    public void tearDown() {
-        String url = driver.getCurrentUrl();
-        if (url != null && !url.startsWith("data:")) {
-            driver.manage().deleteAllCookies();
-            ((JavascriptExecutor) driver).executeScript(
-                "window.localStorage.clear(); window.sessionStorage.clear();"
-            );
-        }
-    }
+  // ── Shared Given steps (used by both maintodo.feature and subtask.feature) ──
 
-    @AfterAll
-    public static void closeBrowser() {
-        DriverManager.closeDriver();
-    }
+  @Given("a main todo {string} exists")
+  public void aMainTodoExists(String task) {
+    todoPage.createMainTodo(task);
+  }
 
-    // ── Shared Given steps (used by both maintodo.feature and subtask.feature) ──
+  @Given("a subtask {string} exists under {string}")
+  public void aSubtaskExistsUnder(String subtask, String mainTask) {
 
-    @Given("the user is registered and logged in")
-    public void theUserIsRegisteredAndLoggedIn() {
-        userService.register(USERNAME, EMAIL, PASSWORD);
-        loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
-        todoPage.open();
-    }
+    // Open panel
+    todoPage.expandTodo(mainTask);
 
-    @Given("a main todo {string} exists")
-    public void aMainTodoExists(String task) {
-        todoPage.createMainTodo(task);
-    }
+    // Add subtask
+    todoPage.typeInSubtaskInput(subtask);
+    todoPage.clickAddSubtaskButton(subtask);
 
-    @Given("the subtask {string} exists under {string}")
-    public void theSubtaskExistsUnder(String subtask, String mainTask) {
-        todoPage.expandTodo(mainTask);
-        todoPage.typeInSubtaskInput(subtask);
-        todoPage.clickAddSubtaskButton();
-        assertTrue(todoPage.isSubtaskInList(subtask),
-            "Seed failed: subtask '" + subtask + "' did not appear after creation");
-    }
+    // Angular rerender closes the panel.
+    // Re-open it so the next step starts with a visible panel.
+    todoPage.expandTodo(mainTask);
+
+    assertTrue(
+        todoPage.isSubtaskInList(subtask),
+        "Subtask was not created in UI");
+  }
 }

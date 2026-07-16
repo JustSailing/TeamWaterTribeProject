@@ -1,5 +1,6 @@
 package com.watertribe.todo.subtask;
 
+import com.watertribe.todo.config.TestSecurityConfig;
 import com.watertribe.todo.entity.MainTodo;
 import com.watertribe.todo.entity.User;
 import com.watertribe.todo.repository.MainTodoRepository;
@@ -13,13 +14,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@Import(TestSecurityConfig.class)
+@ActiveProfiles("test")
 class SubTaskApiTest {
 
     @LocalServerPort
@@ -100,7 +107,7 @@ class SubTaskApiTest {
     }
 
     @Test
-    void createSubTask_onNonExistentMainTodo_returns500() {
+    void createSubTask_onNonExistentMainTodo_returns404() {
         given()
             .header("Authorization", "Bearer " + token)
             .contentType(ContentType.JSON)
@@ -110,7 +117,7 @@ class SubTaskApiTest {
         .when()
             .post("/api/main-todos/99999/subtasks")
         .then()
-            .statusCode(500);
+            .statusCode(404);
     }
 
 
@@ -156,13 +163,13 @@ class SubTaskApiTest {
     }
 
     @Test
-    void getSubTaskById_notFound_returns500() {
+    void getSubTaskById_notFound_returns404() {
         given()
             .header("Authorization", "Bearer " + token)
         .when()
             .get("/api/main-todos/{mainTodoId}/subtasks/99999", mainTodoId)
         .then()
-            .statusCode(500);
+            .statusCode(404);
     }
 
 
@@ -233,7 +240,7 @@ class SubTaskApiTest {
         .when()
             .get("/api/main-todos/{mainTodoId}/subtasks/{id}", mainTodoId, subTaskId)
         .then()
-            .statusCode(500);
+            .statusCode(404);
     }
 
     @Test

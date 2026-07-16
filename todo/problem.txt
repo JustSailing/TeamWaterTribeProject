@@ -1,0 +1,1608 @@
+> Task :clean
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+Gradle Test Executor 48 STANDARD_ERROR
+    Jul 16, 2026 5:02:41 PM io.cucumber.junit.platform.engine.DiscoverySelectorResolver warnWhenCucumberFeaturesPropertyIsUsed
+    WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
+
+    This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498
+
+    If you are using the JUnit 5 Suite Engine, Platform Launcher API or Console Launcher you should not use this property. Please consult the JUnit 5 documentation on test selection.
+
+User Login API > Successful login with valid credentials returns a JWT token STANDARD_OUT
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:02:43.058-04:00  INFO 48496 --- [    Test worker] c.w.todo.cucumber.SpringIntegrationTest  : Starting SpringIntegrationTest using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:02:43.061-04:00  INFO 48496 --- [    Test worker] c.w.todo.cucumber.SpringIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+    2026-07-16T17:02:44.026-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:02:44.101-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:02:44.742-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+    2026-07-16T17:02:44.757-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2026-07-16T17:02:44.758-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+    2026-07-16T17:02:44.834-04:00  INFO 48496 --- [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1554 ms
+    2026-07-16T17:02:45.084-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:02:45.176-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+    2026-07-16T17:02:45.752-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:02:45.810-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2026-07-16T17:02:45.979-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:02:45.979-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2026-07-16T17:02:46.010-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:02:46.034-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:02:47.222-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:02:47.284-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:02:47.372-04:00  INFO 48496 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+    2026-07-16T17:02:47.697-04:00  WARN 48496 --- [    Test worker] o.s.aop.framework.CglibAopProxy          : Unable to proxy interface-implementing method [public final void org.springframework.web.filter.GenericFilterBean.init(jakarta.servlet.FilterConfig) throws jakarta.servlet.ServletException] because it is marked as final, consider using interface-based JDK proxies instead.
+    2026-07-16T17:02:48.544-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:02:48.759-04:00  INFO 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+    2026-07-16T17:02:48.998-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:02:49.402-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+    2026-07-16T17:02:49.409-04:00  INFO 48496 --- [    Test worker] c.w.todo.cucumber.SpringIntegrationTest  : Started SpringIntegrationTest in 6.702 seconds (process running for 8.934)
+
+User Login API > Successful login with valid credentials returns a JWT token STANDARD_ERROR
+    Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    WARNING: A Java agent has been loaded dynamically (C:\Users\Willa\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.18.10\9426d28828bdcdf42666bb7a68c468279ea78f59\byte-buddy-agent-1.18.10.jar)
+    WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    WARNING: Dynamic loading of agents will be disallowed by default in a future release
+
+
+> Task :test
+
+User Login API > Successful login with valid credentials returns a JWT token STANDARD_OUT
+
+    Scenario: Successful login with valid credentials returns a JWT token      [90m# features/Login.feature:11[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m              [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mGiven [0m[32ma registered user with username [0m[32m[1m"alice"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.aRegisteredUser(java.lang.String,java.lang.String)[0m
+    2026-07-16T17:02:51.741-04:00  INFO 48496 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+    2026-07-16T17:02:51.742-04:00  INFO 48496 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+    2026-07-16T17:02:51.744-04:00  INFO 48496 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                    [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice       |
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m200[0m                              [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should be a non-empty JWT string[0m                   [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldBeJwt()[0m
+    2026-07-16T17:02:53.208-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:53.209-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Successful login with valid credentials returns a JWT token PASSED
+
+User Login API > Login fails with wrong password STANDARD_OUT
+
+    Scenario: Login fails with wrong password                                  [90m# features/Login.feature:21[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m              [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mGiven [0m[32ma registered user with username [0m[32m[1m"alice"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.aRegisteredUser(java.lang.String,java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                    [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice       |
+        | password | wrongpasswd |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                              [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m      [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:54.342-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:54.342-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Login fails with wrong password PASSED
+
+User Login API > Login fails with non-existent username STANDARD_OUT
+
+    Scenario: Login fails with non-existent username                      [90m# features/Login.feature:29[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m               [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | ghost_user  |
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                         [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:55.270-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:55.270-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Login fails with non-existent username PASSED
+
+User Login API > Login fails with wrong username and wrong password STANDARD_OUT
+
+    Scenario: Login fails with wrong username and wrong password          [90m# features/Login.feature:36[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m               [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | nobody      |
+        | password | badpassword |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                         [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:56.134-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:56.134-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Login fails with wrong username and wrong password PASSED
+
+User Login API > Login fails when username is missing STANDARD_OUT
+
+    Scenario: Login fails when username is missing                               [90m# features/Login.feature:45[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:57.001-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:57.001-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Login fails when username is missing PASSED
+
+User Login API > Login fails when password is missing STANDARD_OUT
+
+    Scenario: Login fails when password is missing                               [90m# features/Login.feature:51[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:57.891-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:57.891-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+User Login API > Login fails when password is missing PASSED
+
+User Login API > Login fails when both fields are blank STANDARD_OUT
+
+    Scenario: Login fails when both fields are blank                             [90m# features/Login.feature:57[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | [empty] |
+        | password | [empty] |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:58.792-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:58.792-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+    2026-07-16T17:02:58.862-04:00  WARN 48496 --- [HttpClient-13-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+User Login API > Login fails when both fields are blank PASSED
+
+User Login API > Login fails when request body is empty JSON STANDARD_OUT
+
+    Scenario: Login fails when request body is empty JSON                        [90m# features/Login.feature:64[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with an empty body[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithEmptyBody(java.lang.String)[0m
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:02:59.672-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:02:59.673-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+    2026-07-16T17:02:59.742-04:00  WARN 48496 --- [HttpClient-15-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+User Login API > Login fails when request body is empty JSON PASSED
+
+Main Todo UI > Empty state message is shown when no todos exist STANDARD_OUT
+
+    Scenario: Empty state message is shown when no todos exist [90m# features/maintodo.feature:9[0m
+    DEBUG: Registering user: user1784235779809 with password: Password123!
+    2026-07-16T17:03:00.564-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:00.564-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235779809 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m               [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mThen [0m[32mthe empty main todo state is displayed[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theEmptyMainTodoStateIsDisplayed()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+Main Todo UI > Empty state message is shown when no todos exist PASSED
+
+Main Todo UI > Create a main todo STANDARD_OUT
+
+    Scenario: Create a main todo                                   [90m# features/maintodo.feature:12[0m
+    DEBUG: Registering user: user1784235782732 with password: Password123!
+    2026-07-16T17:03:03.435-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:03.435-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235782732 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                   [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mWhen [0m[32mthe user types [0m[32m[1m"Buy groceries"[0m[32m into the main todo input[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m                 [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Buy groceries"[0m[32m appears in the list[0m       [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+Main Todo UI > Create a main todo PASSED
+
+Main Todo UI > Create multiple main todos STANDARD_OUT
+
+    Scenario: Create multiple main todos                        [90m# features/maintodo.feature:17[0m
+    DEBUG: Registering user: user1784235786166 with password: Password123!
+    2026-07-16T17:03:06.894-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:06.895-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235786166 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mWhen [0m[32mthe user types [0m[32m[1m"Task Alpha"[0m[32m into the main todo input[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mAnd [0m[32mthe user types [0m[32m[1m"Task Beta"[0m[32m into the main todo input[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Task Alpha"[0m[32m appears in the list[0m       [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe main todo [0m[32m[1m"Task Beta"[0m[32m appears in the list[0m         [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+    2026-07-16T17:03:09.661-04:00  WARN 48496 --- [HttpClient-21-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+Main Todo UI > Create multiple main todos PASSED
+
+Main Todo UI > Edit a main todo STANDARD_OUT
+
+    Scenario: Edit a main todo                                      [90m# features/maintodo.feature:25[0m
+    DEBUG: Registering user: user1784235789713 with password: Password123!
+    2026-07-16T17:03:10.502-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:10.503-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235789713 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                    [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Original Task"[0m[32m exists[0m                      [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user clicks the edit button for todo [0m[32m[1m"Original Task"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksEditButtonForTodo(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clears the todo input and types [0m[32m[1m"Updated Task"[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClearsTodoInputAndTypes(java.lang.String)[0m
+      [32mAnd [0m[32mthe user saves the todo edit[0m                              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserSavesTodEdit()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Updated Task"[0m[32m appears in the list[0m         [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe main todo [0m[32m[1m"Original Task"[0m[32m is no longer in the list[0m    [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsNoLongerInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+Main Todo UI > Edit a main todo PASSED
+
+Main Todo UI > Delete a main todo STANDARD_OUT
+
+    Scenario: Delete a main todo                                   [90m# features/maintodo.feature:33[0m
+    DEBUG: Registering user: user1784235794095 with password: Password123!
+    2026-07-16T17:03:14.820-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:14.820-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235794095 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                   [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Task To Delete"[0m[32m exists[0m                    [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user deletes the todo [0m[32m[1m"Task To Delete"[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserDeletesTodo(java.lang.String)[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Task To Delete"[0m[32m is no longer in the list[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsNoLongerInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+Main Todo UI > Delete a main todo PASSED
+
+Main Todo UI > Mark a main todo as complete STANDARD_OUT
+
+    Scenario: Mark a main todo as complete                     [90m# features/maintodo.feature:38[0m
+    DEBUG: Registering user: user1784235797614 with password: Password123!
+    2026-07-16T17:03:18.353-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:18.354-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235797614 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m               [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Morning Run"[0m[32m exists[0m                   [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user checks the checkbox for todo [0m[32m[1m"Morning Run"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserChecksCheckboxForTodo(java.lang.String)[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Morning Run"[0m[32m is shown as completed[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsShownAsCompleted(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+    2026-07-16T17:03:21.547-04:00  WARN 48496 --- [HttpClient-27-1] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+Main Todo UI > Mark a main todo as complete PASSED
+
+Main Todo UI > Cancel editing a main todo STANDARD_OUT
+
+    Scenario: Cancel editing a main todo                            [90m# features/maintodo.feature:43[0m
+    DEBUG: Registering user: user1784235801605 with password: Password123!
+    2026-07-16T17:03:22.328-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:22.328-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235801605 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                    [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Stable Task"[0m[32m exists[0m                        [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user clicks the edit button for todo [0m[32m[1m"Stable Task"[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksEditButtonForTodo(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clears the todo input and types [0m[32m[1m"Temporary Edit"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClearsTodoInputAndTypes(java.lang.String)[0m
+      [32mAnd [0m[32mthe user cancels the edit[0m                                 [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserCancelsTheEdit()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Stable Task"[0m[32m appears in the list[0m          [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe cancel button is no longer visible[0m                    [90m# com.watertribe.todo.cucumber.MainTodoSteps.theCancelButtonIsNoLongerVisible()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+Main Todo UI > Cancel editing a main todo PASSED
+
+SubTask UI Management > Expand a main todo to view subtasks STANDARD_OUT
+
+    Scenario: Expand a main todo to view subtasks         [90m# features/subtask.feature:6[0m
+    DEBUG: Registering user: user1784235805234 with password: Password123!
+    2026-07-16T17:03:25.937-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:25.937-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235805234 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m          [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"My First Todo"[0m[32m exists[0m            [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"My First Todo"[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "My First Todo"(classpath:features/subtask.feature:8)
+    [0m
+      [36mThen [0m[36mthe subtask panel should be visible[0m            [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskPanelShouldBeVisible()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Expand a main todo to view subtasks FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+SubTask UI Management > Add a subtask STANDARD_OUT
+
+    Scenario: Add a subtask                                 [90m# features/subtask.feature:11[0m
+    DEBUG: Registering user: user1784235808816 with password: Password123!
+    2026-07-16T17:03:29.555-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:29.556-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235808816 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m            [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Shopping"[0m[32m exists[0m                   [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"Shopping"[0m        [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "Shopping"(classpath:features/subtask.feature:13)
+    [0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Buy milk"[0m                [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Buy milk"[0m[36m should appear in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Add a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+SubTask UI Management > Add multiple subtasks STANDARD_OUT
+
+    Scenario: Add multiple subtasks                             [90m# features/subtask.feature:17[0m
+    DEBUG: Registering user: user1784235812331 with password: Password123!
+    2026-07-16T17:03:33.059-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:33.059-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235812331 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Work tasks"[0m[32m exists[0m                     [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"Work tasks"[0m          [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "Work tasks"(classpath:features/subtask.feature:19)
+    [0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Write report"[0m                [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Send email"[0m                  [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Write report"[0m[36m should appear in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+      [36mAnd [0m[36mthe subtask [0m[36m[1m"Send email"[0m[36m should appear in the list[0m    [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Add multiple subtasks FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+SubTask UI Management > Edit a subtask STANDARD_OUT
+
+    Scenario: Edit a subtask                                     [90m# features/subtask.feature:25[0m
+    DEBUG: Registering user: user1784235815787 with password: Password123!
+    2026-07-16T17:03:36.499-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:36.499-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235815787 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                 [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Errands"[0m[32m exists[0m                         [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Old name"[0m[31m exists under [0m[31m[1m"Errands"[0m            [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Old name" exists under "Errands"(classpath:features/subtask.feature:27)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Errands"[0m              [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user edits the subtask [0m[36m[1m"Old name"[0m[36m to [0m[36m[1m"New name"[0m    [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserEditsTheSubtask(java.lang.String,java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"New name"[0m[36m should appear in the list[0m      [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+      [36mAnd [0m[36mthe subtask [0m[36m[1m"Old name"[0m[36m should no longer be in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldNoLongerBeInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Edit a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+SubTask UI Management > Delete a subtask STANDARD_OUT
+
+    Scenario: Delete a subtask                                       [90m# features/subtask.feature:33[0m
+    DEBUG: Registering user: user1784235819147 with password: Password123!
+    2026-07-16T17:03:39.899-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:39.899-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235819147 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                     [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Chores"[0m[32m exists[0m                              [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Wash dishes"[0m[31m exists under [0m[31m[1m"Chores"[0m              [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Wash dishes" exists under "Chores"(classpath:features/subtask.feature:35)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Chores"[0m                   [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user deletes the subtask [0m[36m[1m"Wash dishes"[0m                 [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserDeletesTheSubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Wash dishes"[0m[36m should no longer be in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldNoLongerBeInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Delete a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+SubTask UI Management > Mark a subtask as complete STANDARD_OUT
+
+    Scenario: Mark a subtask as complete                          [90m# features/subtask.feature:40[0m
+    DEBUG: Registering user: user1784235822566 with password: Password123!
+    2026-07-16T17:03:43.233-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:43.233-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235822566 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                  [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Exercise"[0m[32m exists[0m                         [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Morning run"[0m[31m exists under [0m[31m[1m"Exercise"[0m         [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Morning run" exists under "Exercise"(classpath:features/subtask.feature:42)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Exercise"[0m              [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user completes the subtask [0m[36m[1m"Morning run"[0m            [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserCompletesTheSubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Morning run"[0m[36m should be shown as completed[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldBeShownAsCompleted(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+SubTask UI Management > Mark a subtask as complete FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > User Login API > Successful login with valid credentials returns a JWT token STANDARD_OUT
+
+    Scenario: Successful login with valid credentials returns a JWT token      [90m# features/Login.feature:11[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m              [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mGiven [0m[32ma registered user with username [0m[32m[1m"alice"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.aRegisteredUser(java.lang.String,java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                    [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice       |
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m200[0m                              [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should be a non-empty JWT string[0m                   [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldBeJwt()[0m
+    2026-07-16T17:03:46.857-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:46.857-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+    2026-07-16T17:03:46.921-04:00  WARN 48496 --- [HttpClient-43-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+CucumberRunnerTest > Cucumber > User Login API > Successful login with valid credentials returns a JWT token PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with wrong password STANDARD_OUT
+
+    Scenario: Login fails with wrong password                                  [90m# features/Login.feature:21[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m              [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mGiven [0m[32ma registered user with username [0m[32m[1m"alice"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.aRegisteredUser(java.lang.String,java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                    [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice       |
+        | password | wrongpasswd |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                              [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m      [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:47.796-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:47.797-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with wrong password PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with non-existent username STANDARD_OUT
+
+    Scenario: Login fails with non-existent username                      [90m# features/Login.feature:29[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m               [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | ghost_user  |
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                         [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:48.640-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:48.640-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with non-existent username PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with wrong username and wrong password STANDARD_OUT
+
+    Scenario: Login fails with wrong username and wrong password          [90m# features/Login.feature:36[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m               [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | nobody      |
+        | password | badpassword |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m401[0m                         [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Invalid username or password"[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:49.528-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:49.528-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails with wrong username and wrong password PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when username is missing STANDARD_OUT
+
+    Scenario: Login fails when username is missing                               [90m# features/Login.feature:45[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | password | password123 |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:50.320-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:50.321-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when username is missing PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when password is missing STANDARD_OUT
+
+    Scenario: Login fails when password is missing                               [90m# features/Login.feature:51[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | alice |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:51.146-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:51.147-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+    2026-07-16T17:03:51.220-04:00  WARN 48496 --- [HttpClient-53-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when password is missing PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when both fields are blank STANDARD_OUT
+
+    Scenario: Login fails when both fields are blank                             [90m# features/Login.feature:57[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with:[0m                      [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithTable(java.lang.String,io.cucumber.datatable.DataTable)[0m
+        | username | [empty] |
+        | password | [empty] |
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:52.049-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:52.049-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when both fields are blank PASSED
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when request body is empty JSON STANDARD_OUT
+
+    Scenario: Login fails when request body is empty JSON                        [90m# features/Login.feature:64[0m
+      [32mGiven [0m[32mthe application is running on [0m[32m[1m"http://localhost:8080"[0m                [90m# com.watertribe.todo.cucumber.LoginSteps.theApplicationIsRunning(java.lang.String)[0m
+      [32mWhen [0m[32mI send a POST request to [0m[32m[1m"/api/auth/login"[0m[32m with an empty body[0m         [90m# com.watertribe.todo.cucumber.LoginSteps.iSendPostWithEmptyBody(java.lang.String)[0m
+      [32mThen [0m[32mthe response status code should be [0m[32m[1m400[0m                                [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseStatusCodeShouldBe(int)[0m
+      [32mAnd [0m[32mthe response body should contain [0m[32m[1m"Username and password are required."[0m [90m# com.watertribe.todo.cucumber.LoginSteps.theResponseBodyShouldContain(java.lang.String)[0m
+    2026-07-16T17:03:52.857-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:52.857-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Test finished. Current URL: data:,
+
+CucumberRunnerTest > Cucumber > User Login API > Login fails when request body is empty JSON PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Empty state message is shown when no todos exist STANDARD_OUT
+
+    Scenario: Empty state message is shown when no todos exist [90m# features/maintodo.feature:9[0m
+    DEBUG: Registering user: user1784235832975 with password: Password123!
+    2026-07-16T17:03:53.646-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:53.647-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235832975 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m               [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mThen [0m[32mthe empty main todo state is displayed[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theEmptyMainTodoStateIsDisplayed()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Empty state message is shown when no todos exist PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Create a main todo STANDARD_OUT
+
+    Scenario: Create a main todo                                   [90m# features/maintodo.feature:12[0m
+    DEBUG: Registering user: user1784235835641 with password: Password123!
+    2026-07-16T17:03:56.368-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:56.368-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235835641 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                   [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mWhen [0m[32mthe user types [0m[32m[1m"Buy groceries"[0m[32m into the main todo input[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m                 [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Buy groceries"[0m[32m appears in the list[0m       [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+    2026-07-16T17:03:59.107-04:00  WARN 48496 --- [HttpClient-61-2] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Create a main todo PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Create multiple main todos STANDARD_OUT
+
+    Scenario: Create multiple main todos                        [90m# features/maintodo.feature:17[0m
+    DEBUG: Registering user: user1784235839157 with password: Password123!
+    2026-07-16T17:03:59.896-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:03:59.897-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235839157 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mWhen [0m[32mthe user types [0m[32m[1m"Task Alpha"[0m[32m into the main todo input[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mAnd [0m[32mthe user types [0m[32m[1m"Task Beta"[0m[32m into the main todo input[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserTypesIntoMainTodoInput(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clicks the add main todo button[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksAddMainTodoButton()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Task Alpha"[0m[32m appears in the list[0m       [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe main todo [0m[32m[1m"Task Beta"[0m[32m appears in the list[0m         [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+    2026-07-16T17:04:02.764-04:00  WARN 48496 --- [HttpClient-63-2] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+    java.net.SocketException: Connection reset
+    	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+    	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1178) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:841) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467) ~[java.net.http:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412) ~[java.net.http:na]
+    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+    	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412) ~[java.net.http:na]
+
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Create multiple main todos PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Edit a main todo STANDARD_OUT
+
+    Scenario: Edit a main todo                                      [90m# features/maintodo.feature:25[0m
+    DEBUG: Registering user: user1784235842813 with password: Password123!
+    2026-07-16T17:04:03.528-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:03.528-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235842813 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                    [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Original Task"[0m[32m exists[0m                      [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user clicks the edit button for todo [0m[32m[1m"Original Task"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksEditButtonForTodo(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clears the todo input and types [0m[32m[1m"Updated Task"[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClearsTodoInputAndTypes(java.lang.String)[0m
+      [32mAnd [0m[32mthe user saves the todo edit[0m                              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserSavesTodEdit()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Updated Task"[0m[32m appears in the list[0m         [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe main todo [0m[32m[1m"Original Task"[0m[32m is no longer in the list[0m    [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsNoLongerInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Edit a main todo PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Delete a main todo STANDARD_OUT
+
+    Scenario: Delete a main todo                                   [90m# features/maintodo.feature:33[0m
+    DEBUG: Registering user: user1784235847434 with password: Password123!
+    2026-07-16T17:04:08.156-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:08.156-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235847434 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                   [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Task To Delete"[0m[32m exists[0m                    [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user deletes the todo [0m[32m[1m"Task To Delete"[0m              [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserDeletesTodo(java.lang.String)[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Task To Delete"[0m[32m is no longer in the list[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsNoLongerInList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Delete a main todo PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Mark a main todo as complete STANDARD_OUT
+
+    Scenario: Mark a main todo as complete                     [90m# features/maintodo.feature:38[0m
+    DEBUG: Registering user: user1784235850834 with password: Password123!
+    2026-07-16T17:04:11.525-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:11.525-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235850834 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m               [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Morning Run"[0m[32m exists[0m                   [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user checks the checkbox for todo [0m[32m[1m"Morning Run"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserChecksCheckboxForTodo(java.lang.String)[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Morning Run"[0m[32m is shown as completed[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoIsShownAsCompleted(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Mark a main todo as complete PASSED
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Cancel editing a main todo STANDARD_OUT
+
+    Scenario: Cancel editing a main todo                            [90m# features/maintodo.feature:43[0m
+    DEBUG: Registering user: user1784235854964 with password: Password123!
+    2026-07-16T17:04:15.678-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:15.678-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235854964 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                    [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Stable Task"[0m[32m exists[0m                        [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [32mWhen [0m[32mthe user clicks the edit button for todo [0m[32m[1m"Stable Task"[0m   [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClicksEditButtonForTodo(java.lang.String)[0m
+      [32mAnd [0m[32mthe user clears the todo input and types [0m[32m[1m"Temporary Edit"[0m [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserClearsTodoInputAndTypes(java.lang.String)[0m
+      [32mAnd [0m[32mthe user cancels the edit[0m                                 [90m# com.watertribe.todo.cucumber.MainTodoSteps.theUserCancelsTheEdit()[0m
+      [32mThen [0m[32mthe main todo [0m[32m[1m"Stable Task"[0m[32m appears in the list[0m          [90m# com.watertribe.todo.cucumber.MainTodoSteps.theMainTodoAppearsInList(java.lang.String)[0m
+      [32mAnd [0m[32mthe cancel button is no longer visible[0m                    [90m# com.watertribe.todo.cucumber.MainTodoSteps.theCancelButtonIsNoLongerVisible()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > Main Todo UI > Cancel editing a main todo PASSED
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Expand a main todo to view subtasks STANDARD_OUT
+
+    Scenario: Expand a main todo to view subtasks         [90m# features/subtask.feature:6[0m
+    DEBUG: Registering user: user1784235858476 with password: Password123!
+    2026-07-16T17:04:19.214-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:19.214-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235858476 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m          [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"My First Todo"[0m[32m exists[0m            [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"My First Todo"[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "My First Todo"(classpath:features/subtask.feature:8)
+    [0m
+      [36mThen [0m[36mthe subtask panel should be visible[0m            [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskPanelShouldBeVisible()[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Expand a main todo to view subtasks FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Add a subtask STANDARD_OUT
+
+    Scenario: Add a subtask                                 [90m# features/subtask.feature:11[0m
+    DEBUG: Registering user: user1784235861924 with password: Password123!
+    2026-07-16T17:04:22.628-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:22.628-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235861924 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m            [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Shopping"[0m[32m exists[0m                   [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"Shopping"[0m        [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "Shopping"(classpath:features/subtask.feature:13)
+    [0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Buy milk"[0m                [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Buy milk"[0m[36m should appear in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Add a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Add multiple subtasks STANDARD_OUT
+
+    Scenario: Add multiple subtasks                             [90m# features/subtask.feature:17[0m
+    DEBUG: Registering user: user1784235865287 with password: Password123!
+    2026-07-16T17:04:26.020-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:26.020-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235865287 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Work tasks"[0m[32m exists[0m                     [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mWhen [0m[31mthe user expands the main todo [0m[31m[1m"Work tasks"[0m          [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(SubTaskSteps.java:18)
+    	at ✽.the user expands the main todo "Work tasks"(classpath:features/subtask.feature:19)
+    [0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Write report"[0m                [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mAnd [0m[36mthe user adds a subtask [0m[36m[1m"Send email"[0m                  [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserAddsASubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Write report"[0m[36m should appear in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+      [36mAnd [0m[36mthe subtask [0m[36m[1m"Send email"[0m[36m should appear in the list[0m    [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Add multiple subtasks FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Edit a subtask STANDARD_OUT
+
+    Scenario: Edit a subtask                                     [90m# features/subtask.feature:25[0m
+    DEBUG: Registering user: user1784235868830 with password: Password123!
+    2026-07-16T17:04:29.589-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:29.589-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235868830 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                 [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Errands"[0m[32m exists[0m                         [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Old name"[0m[31m exists under [0m[31m[1m"Errands"[0m            [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Old name" exists under "Errands"(classpath:features/subtask.feature:27)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Errands"[0m              [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user edits the subtask [0m[36m[1m"Old name"[0m[36m to [0m[36m[1m"New name"[0m    [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserEditsTheSubtask(java.lang.String,java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"New name"[0m[36m should appear in the list[0m      [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldAppearInTheList(java.lang.String)[0m
+      [36mAnd [0m[36mthe subtask [0m[36m[1m"Old name"[0m[36m should no longer be in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldNoLongerBeInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Edit a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Delete a subtask STANDARD_OUT
+
+    Scenario: Delete a subtask                                       [90m# features/subtask.feature:33[0m
+    DEBUG: Registering user: user1784235872317 with password: Password123!
+    2026-07-16T17:04:33.044-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:33.044-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235872317 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                     [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Chores"[0m[32m exists[0m                              [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Wash dishes"[0m[31m exists under [0m[31m[1m"Chores"[0m              [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Wash dishes" exists under "Chores"(classpath:features/subtask.feature:35)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Chores"[0m                   [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user deletes the subtask [0m[36m[1m"Wash dishes"[0m                 [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserDeletesTheSubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Wash dishes"[0m[36m should no longer be in the list[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldNoLongerBeInTheList(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Delete a subtask FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Mark a subtask as complete STANDARD_OUT
+
+    Scenario: Mark a subtask as complete                          [90m# features/subtask.feature:40[0m
+    DEBUG: Registering user: user1784235875764 with password: Password123!
+    2026-07-16T17:04:36.436-04:00  WARN 48496 --- [    Test worker] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 150
+    2026-07-16T17:04:36.437-04:00  WARN 48496 --- [    Test worker] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 150.0.7871.116. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.43.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    CURRENT URL: http://localhost:8080/register
+    DEBUG: Logging in with user: user1784235875764 and password: Password123!
+      [32mGiven [0m[32mthe user is registered and logged in[0m                  [90m# com.watertribe.todo.cucumber.BackgroundSteps.theUserIsRegisteredAndLoggedIn()[0m
+      [32mGiven [0m[32ma main todo [0m[32m[1m"Exercise"[0m[32m exists[0m                         [90m# com.watertribe.todo.cucumber.CucumberHooks.aMainTodoExists(java.lang.String)[0m
+      [31mAnd [0m[31ma subtask [0m[31m[1m"Morning run"[0m[31m exists under [0m[31m[1m"Exercise"[0m         [90m# com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(java.lang.String,java.lang.String)[0m
+          [31mjava.lang.ClassCastException: class jdk.proxy3.$Proxy194 cannot be cast to class org.openqa.selenium.JavascriptExecutor (jdk.proxy3.$Proxy194 is in module jdk.proxy3 of loader 'app'; org.openqa.selenium.JavascriptExecutor is in unnamed module of loader 'app')
+    	at com.watertribe.todo.cucumber.pages.TodoPage.expandTodo(TodoPage.java:167)
+    	at com.watertribe.todo.cucumber.CucumberHooks.aSubtaskExistsUnder(CucumberHooks.java:79)
+    	at ✽.a subtask "Morning run" exists under "Exercise"(classpath:features/subtask.feature:42)
+    [0m
+      [36mWhen [0m[36mthe user expands the main todo [0m[36m[1m"Exercise"[0m              [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserExpandsTheMainTodo(java.lang.String)[0m
+      [36mAnd [0m[36mthe user completes the subtask [0m[36m[1m"Morning run"[0m            [90m# com.watertribe.todo.cucumber.SubTaskSteps.theUserCompletesTheSubtask(java.lang.String)[0m
+      [36mThen [0m[36mthe subtask [0m[36m[1m"Morning run"[0m[36m should be shown as completed[0m [90m# com.watertribe.todo.cucumber.SubTaskSteps.theSubtaskShouldBeShownAsCompleted(java.lang.String)[0m
+    Test finished. Current URL: http://localhost:8080/home/todos
+
+CucumberRunnerTest > Cucumber > SubTask UI Management > Mark a subtask as complete FAILED
+    java.lang.ClassCastException at TodoPage.java:167
+
+TodoApplicationTests STANDARD_OUT
+    2026-07-16T17:04:39.159-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.TodoApplicationTests]: TodoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:39.173-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.TodoApplicationTests
+    2026-07-16T17:04:39.174-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.TodoApplicationTests]: TodoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:39.175-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.TodoApplicationTests
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:04:39.227-04:00  INFO 48496 --- [    Test worker] c.watertribe.todo.TodoApplicationTests   : Starting TodoApplicationTests using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:04:39.228-04:00  INFO 48496 --- [    Test worker] c.watertribe.todo.TodoApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+    2026-07-16T17:04:39.436-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:04:39.452-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:04:39.541-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:04:39.580-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:04:39.583-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+    2026-07-16T17:04:39.585-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn5: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:04:39.585-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+    2026-07-16T17:04:39.586-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:04:39.586-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:04:39.664-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:04:39.674-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:39.765-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:04:39.797-04:00  INFO 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+    2026-07-16T17:04:39.853-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:04:39.931-04:00  INFO 48496 --- [    Test worker] c.watertribe.todo.TodoApplicationTests   : Started TodoApplicationTests in 0.732 seconds (process running for 119.456)
+
+TodoApplicationTests > contextLoads() PASSED
+
+TodoApplicationTests STANDARD_OUT
+    2026-07-16T17:04:39.962-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:39.968-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+    2026-07-16T17:04:39.970-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+LoginApiTest STANDARD_OUT
+    2026-07-16T17:04:39.975-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.login.LoginApiTest]: LoginApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:39.984-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.login.LoginApiTest
+    2026-07-16T17:04:39.986-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.login.LoginApiTest]: LoginApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:39.987-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.login.LoginApiTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:04:40.016-04:00  INFO 48496 --- [    Test worker] com.watertribe.todo.login.LoginApiTest   : Starting LoginApiTest using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:04:40.016-04:00  INFO 48496 --- [    Test worker] com.watertribe.todo.login.LoginApiTest   : No active profile set, falling back to 1 default profile: "default"
+    2026-07-16T17:04:40.258-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:04:40.276-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:04:40.342-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+    2026-07-16T17:04:40.344-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2026-07-16T17:04:40.344-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+    2026-07-16T17:04:40.381-04:00  INFO 48496 --- [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 362 ms
+    2026-07-16T17:04:40.421-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:04:40.456-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:04:40.459-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+    2026-07-16T17:04:40.460-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn10: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:04:40.460-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+    2026-07-16T17:04:40.460-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:04:40.461-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:04:40.553-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:04:40.562-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:40.621-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:04:40.647-04:00  WARN 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [userService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+    2026-07-16T17:04:40.687-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:04:40.737-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62475 (http) with context path '/'
+    2026-07-16T17:04:40.739-04:00  INFO 48496 --- [    Test worker] com.watertribe.todo.login.LoginApiTest   : Started LoginApiTest in 0.75 seconds (process running for 120.264)
+
+LoginApiTest > loginToken_hasValidJwtHeader() STANDARD_OUT
+    2026-07-16T17:04:40.829-04:00  INFO 48496 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+    2026-07-16T17:04:40.829-04:00  INFO 48496 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+    2026-07-16T17:04:40.830-04:00  INFO 48496 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+
+LoginApiTest > loginToken_hasValidJwtHeader() PASSED
+
+LoginApiTest > loginWithValidCredentials_returns200AndJwt() PASSED
+
+LoginApiTest > loginWithMissingPassword_returns400() STANDARD_OUT
+    HTTP/1.1 400 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 35
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Connection: close
+
+    Username and password are required.
+
+LoginApiTest > loginWithMissingPassword_returns400() PASSED
+
+LoginApiTest > loginWithWrongPassword_returns401() STANDARD_OUT
+    HTTP/1.1 401 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 28
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Keep-Alive: timeout=60
+    Connection: keep-alive
+
+    Invalid username or password
+
+LoginApiTest > loginWithWrongPassword_returns401() PASSED
+
+LoginApiTest > loginToken_payloadContainsUsername() STANDARD_OUT
+    HTTP/1.1 200 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 151
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Keep-Alive: timeout=60
+    Connection: keep-alive
+
+    eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwidXNlcm5hbWUiOiJhbGljZSIsImlhdCI6MTc4NDIzNTg4MSwiZXhwIjoxNzg0MzIyMjgxfQ.rzX4JbacO30iLvZ4CCzFxznzMEgBU-sFxixyWl7780s
+
+LoginApiTest > loginToken_payloadContainsUsername() PASSED
+
+LoginApiTest > loginWithBothFieldsWrong_returns401() STANDARD_OUT
+    HTTP/1.1 401 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 28
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Keep-Alive: timeout=60
+    Connection: keep-alive
+
+    Invalid username or password
+
+LoginApiTest > loginWithBothFieldsWrong_returns401() PASSED
+
+LoginApiTest > loginWithBlankFields_returns400() STANDARD_OUT
+    HTTP/1.1 400 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 35
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Connection: close
+
+    Username and password are required.
+
+LoginApiTest > loginWithBlankFields_returns400() PASSED
+
+LoginApiTest > loginWithMissingUsername_returns400() STANDARD_OUT
+    HTTP/1.1 400 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 35
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Connection: close
+
+    Username and password are required.
+
+LoginApiTest > loginWithMissingUsername_returns400() PASSED
+
+LoginApiTest > loginWithEmptyBody_returns400() STANDARD_OUT
+    HTTP/1.1 400 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 35
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Connection: close
+
+    Username and password are required.
+
+LoginApiTest > loginWithEmptyBody_returns400() PASSED
+
+LoginApiTest > loginWithUnknownUsername_returns401() STANDARD_OUT
+    HTTP/1.1 401 
+    Vary: Origin
+    Vary: Access-Control-Request-Method
+    Vary: Access-Control-Request-Headers
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: 0
+    X-Frame-Options: DENY
+    Content-Type: text/plain;charset=UTF-8
+    Content-Length: 28
+    Date: Thu, 16 Jul 2026 21:04:41 GMT
+    Keep-Alive: timeout=60
+    Connection: keep-alive
+
+    Invalid username or password
+
+LoginApiTest > loginWithUnknownUsername_returns401() PASSED
+
+LoginApiTest STANDARD_OUT
+    2026-07-16T17:04:41.904-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+    2026-07-16T17:04:41.910-04:00  INFO 48496 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+    2026-07-16T17:04:41.913-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:41.915-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+    2026-07-16T17:04:41.915-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+
+MainTodoApiTest STANDARD_OUT
+    2026-07-16T17:04:41.924-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.maintodo.MainTodoApiTest]: MainTodoApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:41.930-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.maintodo.MainTodoApiTest
+    2026-07-16T17:04:41.931-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.maintodo.MainTodoApiTest]: MainTodoApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:41.932-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.maintodo.MainTodoApiTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:04:41.959-04:00  INFO 48496 --- [    Test worker] c.w.todo.maintodo.MainTodoApiTest        : Starting MainTodoApiTest using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:04:41.959-04:00  INFO 48496 --- [    Test worker] c.w.todo.maintodo.MainTodoApiTest        : No active profile set, falling back to 1 default profile: "default"
+    2026-07-16T17:04:42.098-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:04:42.111-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:04:42.173-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+    2026-07-16T17:04:42.174-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2026-07-16T17:04:42.174-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+    2026-07-16T17:04:42.207-04:00  INFO 48496 --- [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 247 ms
+    2026-07-16T17:04:42.238-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:04:42.270-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:04:42.274-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+    2026-07-16T17:04:42.274-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn15: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:04:42.275-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+    2026-07-16T17:04:42.275-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:04:42.275-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:04:42.378-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:04:42.410-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:42.461-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:04:42.481-04:00  WARN 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [userService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+    2026-07-16T17:04:42.510-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:04:42.548-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62487 (http) with context path '/'
+    2026-07-16T17:04:42.550-04:00  INFO 48496 --- [    Test worker] c.w.todo.maintodo.MainTodoApiTest        : Started MainTodoApiTest in 0.616 seconds (process running for 122.075)
+
+MainTodoApiTest > testGetAllMainTodos() STANDARD_OUT
+    2026-07-16T17:04:42.647-04:00  INFO 48496 --- [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+    2026-07-16T17:04:42.647-04:00  INFO 48496 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+    2026-07-16T17:04:42.648-04:00  INFO 48496 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testGetAllMainTodos() PASSED
+
+MainTodoApiTest > testGetMainTodoById() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testGetMainTodoById() PASSED
+
+MainTodoApiTest > testCreateMainTodoSuccessfully() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testCreateMainTodoSuccessfully() PASSED
+
+MainTodoApiTest > testUpdateMainTodoSuccessfully() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testUpdateMainTodoSuccessfully() PASSED
+
+MainTodoApiTest > testDeleteMainTodoSuccessfully() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testDeleteMainTodoSuccessfully() PASSED
+
+MainTodoApiTest > testCreateMainTodoWithoutTokenShouldFail() PASSED
+
+MainTodoApiTest > testGetNonExistingMainTodoShouldReturn500() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+MainTodoApiTest > testGetNonExistingMainTodoShouldReturn500() PASSED
+
+MainTodoApiTest STANDARD_OUT
+    2026-07-16T17:04:43.875-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+    2026-07-16T17:04:43.880-04:00  INFO 48496 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+    2026-07-16T17:04:43.882-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:43.883-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+    2026-07-16T17:04:43.884-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+
+RegistrationApiTest STANDARD_OUT
+    2026-07-16T17:04:43.891-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.registration.RegistrationApiTest]: RegistrationApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:43.906-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.registration.RegistrationApiTest
+    2026-07-16T17:04:43.907-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.registration.RegistrationApiTest]: RegistrationApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:43.908-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.registration.RegistrationApiTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:04:43.933-04:00  INFO 48496 --- [    Test worker] c.w.t.registration.RegistrationApiTest   : Starting RegistrationApiTest using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:04:43.933-04:00  INFO 48496 --- [    Test worker] c.w.t.registration.RegistrationApiTest   : No active profile set, falling back to 1 default profile: "default"
+    2026-07-16T17:04:44.092-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:04:44.106-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:04:44.177-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+    2026-07-16T17:04:44.178-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2026-07-16T17:04:44.178-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+    2026-07-16T17:04:44.214-04:00  INFO 48496 --- [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 280 ms
+    2026-07-16T17:04:44.248-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:04:44.280-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:04:44.282-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+    2026-07-16T17:04:44.283-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn20: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:04:44.283-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+    2026-07-16T17:04:44.284-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:04:44.284-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:04:44.382-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:04:44.408-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:44.462-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:04:44.481-04:00  WARN 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [userService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+    2026-07-16T17:04:44.512-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:04:44.558-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62500 (http) with context path '/'
+    2026-07-16T17:04:44.559-04:00  INFO 48496 --- [    Test worker] c.w.t.registration.RegistrationApiTest   : Started RegistrationApiTest in 0.649 seconds (process running for 124.085)
+
+RegistrationApiTest > registerWithEmptyBody_returns400() STANDARD_OUT
+    2026-07-16T17:04:44.582-04:00  INFO 48496 --- [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+    2026-07-16T17:04:44.582-04:00  INFO 48496 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+    2026-07-16T17:04:44.583-04:00  INFO 48496 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+
+RegistrationApiTest > registerWithEmptyBody_returns400() PASSED
+
+RegistrationApiTest > registerWithDuplicateEmail_returns409() PASSED
+
+RegistrationApiTest > registerWithValidData_returns201() PASSED
+
+RegistrationApiTest > registerWithMissingEmail_returns400() PASSED
+
+RegistrationApiTest > registerWithSevenCharPassword_returns400() PASSED
+
+RegistrationApiTest > registerWithMissingPassword_returns400() PASSED
+
+RegistrationApiTest > registerWithEightCharPassword_returns201() PASSED
+
+RegistrationApiTest > registerWithShortPassword_returns400() PASSED
+
+RegistrationApiTest > registerWithDuplicateUsername_returns409() PASSED
+
+RegistrationApiTest > registerWithAllBlankFields_returns400() PASSED
+
+RegistrationApiTest > registerWithMissingUsername_returns400() PASSED
+
+RegistrationApiTest STANDARD_OUT
+    2026-07-16T17:04:45.149-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+    2026-07-16T17:04:45.154-04:00  INFO 48496 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+    2026-07-16T17:04:45.156-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:45.158-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+    2026-07-16T17:04:45.158-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+
+SubTaskApiTest STANDARD_OUT
+    2026-07-16T17:04:45.163-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.subtask.SubTaskApiTest]: SubTaskApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:45.170-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.subtask.SubTaskApiTest
+    2026-07-16T17:04:45.171-04:00  INFO 48496 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.watertribe.todo.subtask.SubTaskApiTest]: SubTaskApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-16T17:04:45.172-04:00  INFO 48496 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.watertribe.todo.TodoApplication for test class com.watertribe.todo.subtask.SubTaskApiTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.0)
+
+    2026-07-16T17:04:45.196-04:00  INFO 48496 --- [    Test worker] c.w.todo.subtask.SubTaskApiTest          : Starting SubTaskApiTest using Java 21 with PID 48496 (started by Willa in C:\Users\Willa\Documents\TeamWaterTribeProject\todo)
+    2026-07-16T17:04:45.196-04:00  INFO 48496 --- [    Test worker] c.w.todo.subtask.SubTaskApiTest          : The following 1 profile is active: "test"
+    2026-07-16T17:04:45.356-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-07-16T17:04:45.372-04:00  INFO 48496 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 3 JPA repository interfaces.
+    2026-07-16T17:04:45.435-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+    2026-07-16T17:04:45.436-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2026-07-16T17:04:45.436-04:00  INFO 48496 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+    2026-07-16T17:04:45.471-04:00  INFO 48496 --- [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 274 ms
+    2026-07-16T17:04:45.508-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-07-16T17:04:45.545-04:00  INFO 48496 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-07-16T17:04:45.548-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+    2026-07-16T17:04:45.549-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn25: url=jdbc:h2:mem:todo_shared_db user=SA
+    2026-07-16T17:04:45.549-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+    2026-07-16T17:04:45.550-04:00  WARN 48496 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    2026-07-16T17:04:45.550-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:h2:mem:todo_shared_db]
+    	Database driver: H2 JDBC Driver
+    	Database dialect: H2Dialect
+    	Database version: 2.4.240
+    	Default catalog/schema: TODO_SHARED_DB/PUBLIC
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: 100
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-07-16T17:04:45.645-04:00  INFO 48496 --- [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-07-16T17:04:45.653-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:45.702-04:00  WARN 48496 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2026-07-16T17:04:45.726-04:00  WARN 48496 --- [    Test worker] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [userService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+    2026-07-16T17:04:45.769-04:00  INFO 48496 --- [    Test worker] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+    2026-07-16T17:04:45.810-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62515 (http) with context path '/'
+    2026-07-16T17:04:45.812-04:00  INFO 48496 --- [    Test worker] c.w.todo.subtask.SubTaskApiTest          : Started SubTaskApiTest in 0.638 seconds (process running for 125.337)
+
+SubTaskApiTest > updateSubTask_withoutToken_returns401() STANDARD_OUT
+    2026-07-16T17:04:45.938-04:00  INFO 48496 --- [o-auto-4-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+    2026-07-16T17:04:45.938-04:00  INFO 48496 --- [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+    2026-07-16T17:04:45.939-04:00  INFO 48496 --- [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > updateSubTask_withoutToken_returns401() PASSED
+
+SubTaskApiTest > getAllSubTasks_returnsEmptyList_whenNoneExist() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > getAllSubTasks_returnsEmptyList_whenNoneExist() PASSED
+
+SubTaskApiTest > createSubTask_onNonExistentMainTodo_returns404() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > createSubTask_onNonExistentMainTodo_returns404() PASSED
+
+SubTaskApiTest > createSubTask_returnsSubTaskBody() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > createSubTask_returnsSubTaskBody() PASSED
+
+SubTaskApiTest > deleteSubTask_thenGetReturns500() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > deleteSubTask_thenGetReturns500() PASSED
+
+SubTaskApiTest > getSubTaskById_notFound_returns404() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > getSubTaskById_notFound_returns404() PASSED
+
+SubTaskApiTest > getSubTaskById_returnsCorrectSubtask() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > getSubTaskById_returnsCorrectSubtask() PASSED
+
+SubTaskApiTest > updateSubTask_updatesTaskAndCompleted() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > updateSubTask_updatesTaskAndCompleted() PASSED
+
+SubTaskApiTest > getAllSubTasks_returnsAllSubtasksForMainTodo() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > getAllSubTasks_returnsAllSubtasksForMainTodo() PASSED
+
+SubTaskApiTest > deleteSubTask_returnsSuccessMessage() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > deleteSubTask_returnsSuccessMessage() PASSED
+
+SubTaskApiTest > deleteSubTask_withoutToken_returns401() STANDARD_OUT
+    Looking for user: testuser
+    Found user: testuser
+
+SubTaskApiTest > deleteSubTask_withoutToken_returns401() PASSED
+
+SubTaskApiTest > createSubTask_withoutToken_returns401() PASSED
+
+SubTaskApiTest STANDARD_OUT
+    2026-07-16T17:04:47.364-04:00  INFO 48496 --- [    Test worker] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+    2026-07-16T17:04:47.369-04:00  INFO 48496 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+    2026-07-16T17:04:47.370-04:00  INFO 48496 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+    2026-07-16T17:04:47.371-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+    2026-07-16T17:04:47.372-04:00  INFO 48496 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+
+2026-07-16T17:04:47.384-04:00  INFO 48496 --- [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-16T17:04:47.389-04:00  INFO 48496 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-07-16T17:04:47.391-04:00  INFO 48496 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-16T17:04:47.392-04:00  INFO 48496 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-16T17:04:47.392-04:00  INFO 48496 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test FAILED
+6 actionable tasks: 6 executed

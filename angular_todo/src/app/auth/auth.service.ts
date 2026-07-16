@@ -13,7 +13,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http.post(
-      `${environment.apiUrl}/login`,
+      `${environment.apiUrl}/api/auth/login`,
       { username, password },
       { responseType: 'text' },
     );

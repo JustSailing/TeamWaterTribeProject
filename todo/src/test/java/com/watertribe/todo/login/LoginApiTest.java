@@ -1,5 +1,6 @@
 package com.watertribe.todo.login;
 
+import com.watertribe.todo.config.TestSecurityConfig;
 import com.watertribe.todo.entity.User;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.SubTaskRepository;
@@ -12,14 +13,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.DirtiesContext;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@Import(TestSecurityConfig.class)
 class LoginApiTest {
 
     @LocalServerPort
@@ -62,7 +67,7 @@ class LoginApiTest {
                         }
                         """)
             .when()
-                .post("/login")
+                .post("/api/auth/login")
             .then()
                 .statusCode(200)
                 .extract().asString();
@@ -85,7 +90,7 @@ class LoginApiTest {
                         }
                         """)
             .when()
-                .post("/login")
+                .post("/api/auth/login")
             .then()
                 .statusCode(200)
                 .extract().asString();
@@ -109,8 +114,9 @@ class LoginApiTest {
                         }
                         """)
             .when()
-                .post("/login")
+                .post("/api/auth/login")
             .then()
+                .log().all()
                 .statusCode(200)
                 .extract().asString();
 
@@ -134,8 +140,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(401)
             .body(equalTo("Invalid username or password"));
     }
@@ -151,8 +158,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(401)
             .body(equalTo("Invalid username or password"));
     }
@@ -168,8 +176,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(401)
             .body(equalTo("Invalid username or password"));
     }
@@ -184,8 +193,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(400)
             .body(equalTo("Username and password are required."));
     }
@@ -200,8 +210,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(400)
             .body(equalTo("Username and password are required."));
     }
@@ -217,8 +228,9 @@ class LoginApiTest {
                     }
                     """)
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(400)
             .body(equalTo("Username and password are required."));
     }
@@ -229,8 +241,9 @@ class LoginApiTest {
             .contentType(ContentType.JSON)
             .body("{}")
         .when()
-            .post("/login")
+            .post("/api/auth/login")
         .then()
+            .log().all()
             .statusCode(400)
             .body(equalTo("Username and password are required."));
     }

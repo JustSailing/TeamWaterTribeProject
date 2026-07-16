@@ -5,6 +5,7 @@ import com.watertribe.todo.dto.SubTaskResponse;
 import com.watertribe.todo.entity.MainTodo;
 import com.watertribe.todo.entity.SubTask;
 import com.watertribe.todo.entity.User;
+import com.watertribe.todo.exception.ResourceNotFoundException;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.SubTaskRepository;
 import com.watertribe.todo.repository.UserRepository;
@@ -18,104 +19,101 @@ import java.util.List;
 @Transactional
 public class SubTaskService {
 
-    private final SubTaskRepository subTaskRepository;
-    private final MainTodoRepository mainTodoRepository;
-    private final UserRepository userRepository;
+  private final SubTaskRepository subTaskRepository;
+  private final MainTodoRepository mainTodoRepository;
+  private final UserRepository userRepository;
 
-    public SubTaskResponse createSubTask(
-            Long mainTodoId,
-            SubTaskRequest request,
-            Long userId
-    ) {
-        MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
+  public SubTaskResponse createSubTask(
+      Long mainTodoId,
+      SubTaskRequest request,
+      Long userId) {
+    MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
 
-        SubTask subTask = SubTask.builder()
-                .task(request.getTask())
-                .description(request.getDescription())
-                .completed(false)
-                .build();
+    SubTask subTask = SubTask.builder()
+        .task(request.getTask())
+        .description(request.getDescription())
+        .completed(false)
+        .build();
 
-        mainTodo.addSubTask(subTask);
+    mainTodo.addSubTask(subTask);
 
-        MainTodo savedMainTodo = mainTodoRepository.saveAndFlush(mainTodo);
-        
-        List<SubTask> updatedTasks = savedMainTodo.getSubTasks();
-        SubTask savedSubTask = updatedTasks.get(updatedTasks.size() - 1);
+    MainTodo savedMainTodo = mainTodoRepository.saveAndFlush(mainTodo);
 
-        return mapToResponse(savedSubTask);
-    }
+    List<SubTask> updatedTasks = savedMainTodo.getSubTasks();
+    SubTask savedSubTask = updatedTasks.get(updatedTasks.size() - 1);
 
-    public List<SubTaskResponse> getAllSubTasks(
-            Long mainTodoId,
-            Long userId
-    ) {
-        MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
+    return mapToResponse(savedSubTask);
+  }
 
-        return subTaskRepository.findByMainTodo(mainTodo)
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
+  public List<SubTaskResponse> getAllSubTasks(
+      Long mainTodoId,
+      Long userId) {
+    MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
 
-    public SubTaskResponse getSubTaskById(
-            Long mainTodoId,
-            Long id,
-            Long userId
-    ) {
-        MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
+    return subTaskRepository.findByMainTodo(mainTodo)
+        .stream()
+        .map(this::mapToResponse)
+        .toList();
+  }
 
-        SubTask subTask = subTaskRepository.findByIdAndMainTodo(id, mainTodo)
-                .orElseThrow(() -> new RuntimeException("Sub task not found"));
+  public SubTaskResponse getSubTaskById(
+      Long mainTodoId,
+      Long id,
+      Long userId) {
+    MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
 
-        return mapToResponse(subTask);
-    }
+    SubTask subTask = subTaskRepository.findByIdAndMainTodo(id, mainTodo)
+        .orElseThrow(() -> new ResourceNotFoundException("Sub task not found"));
 
-    public SubTaskResponse updateSubTask(
-            Long mainTodoId,
-            Long id,
-            SubTaskRequest request,
-            Long userId
-    ) {
-        MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
+    return mapToResponse(subTask);
+  }
 
-        SubTask subTask = subTaskRepository.findByIdAndMainTodo(id, mainTodo)
-                .orElseThrow(() -> new RuntimeException("Sub task not found"));
+  public SubTaskResponse updateSubTask(
+      Long mainTodoId,
+      Long id,
+      SubTaskRequest request,
+      Long userId) {
+    MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
 
-        subTask.setTask(request.getTask());
-        subTask.setDescription(request.getDescription());
-        subTask.setCompleted(request.isCompleted());
+    SubTask subTask = subTaskRepository.findByIdAndMainTodo(id, mainTodo)
+        .orElseThrow(() -> new ResourceNotFoundException("Sub task not found"));
 
-        return mapToResponse(subTaskRepository.saveAndFlush(subTask));
-    }
-    
-    @Transactional
-    public void deleteSubTask(Long mainTodoId, Long id, Long userId) {
-        MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
+    subTask.setTask(request.getTask());
+    subTask.setDescription(request.getDescription());
+    subTask.setCompleted(request.isCompleted());
 
-        mainTodo.removeSubTask(id);
-        mainTodoRepository.saveAndFlush(mainTodo);
+    return mapToResponse(subTaskRepository.saveAndFlush(subTask));
+  }
 
-        subTaskRepository.deleteById(id);
-        subTaskRepository.flush();
-    }
+  @Transactional
+  public void deleteSubTask(Long mainTodoId, Long id, Long userId) {
+    MainTodo mainTodo = getMainTodoForUser(mainTodoId, userId);
 
-    private MainTodo getMainTodoForUser(Long mainTodoId, Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    SubTask subTask = subTaskRepository.findByIdAndMainTodo(id, mainTodo)
+        .orElseThrow(() -> new ResourceNotFoundException("Sub task not found"));
 
-        return mainTodoRepository.findByIdAndUser(mainTodoId, user)
-                .orElseThrow(() -> new RuntimeException("Main todo not found"));
-    }
+    mainTodo.removeSubTask(subTask.getId());
 
-    private SubTaskResponse mapToResponse(SubTask subTask) {
-        return SubTaskResponse.builder()
-                .id(subTask.getId())
-                .task(subTask.getTask())
-                .description(subTask.getDescription())
-                .completed(subTask.isCompleted())
-                .mainTodoId(subTask.getMainTodo().getId())
-                .createdAt(subTask.getCreatedAt())
-                .updatedAt(subTask.getUpdatedAt())
-                .build();
-    }
+    mainTodoRepository.saveAndFlush(mainTodo);
+  }
+
+  private MainTodo getMainTodoForUser(Long mainTodoId, Long userId) {
+    User user = userRepository.findById(userId)
+        .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+    return mainTodoRepository.findByIdAndUser(mainTodoId, user)
+        .orElseThrow(() -> new ResourceNotFoundException("Main todo not found"));
+  }
+
+  private SubTaskResponse mapToResponse(SubTask subTask) {
+    return SubTaskResponse.builder()
+        .id(subTask.getId())
+        .task(subTask.getTask())
+        .description(subTask.getDescription())
+        .completed(subTask.isCompleted())
+        .mainTodoId(subTask.getMainTodo().getId())
+        .createdAt(subTask.getCreatedAt())
+        .updatedAt(subTask.getUpdatedAt())
+        .build();
+  }
 }

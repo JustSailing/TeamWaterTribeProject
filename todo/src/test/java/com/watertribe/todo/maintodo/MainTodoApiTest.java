@@ -1,5 +1,6 @@
 package com.watertribe.todo.maintodo;
 
+import com.watertribe.todo.config.TestSecurityConfig;
 import com.watertribe.todo.entity.User;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.UserRepository;
@@ -11,12 +12,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.DirtiesContext;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@Import(TestSecurityConfig.class)
 class MainTodoApiTest {
 
     @LocalServerPort
@@ -173,6 +178,7 @@ class MainTodoApiTest {
         .when()
             .post("/api/main-todos")
         .then()
+            .log().ifValidationFails()
             .statusCode(anyOf(equalTo(200), equalTo(201)))
             .extract()
             .path("id");

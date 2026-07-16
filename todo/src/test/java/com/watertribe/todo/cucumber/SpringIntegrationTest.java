@@ -3,6 +3,7 @@ package com.watertribe.todo.cucumber;
 import com.watertribe.todo.TodoApplication;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 
 @CucumberContextConfiguration
@@ -11,5 +12,6 @@ import org.springframework.test.context.TestPropertySource;
     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
 )
 @TestPropertySource(properties = "server.port=8080")
+@Import(DriverManager.class)
 public class SpringIntegrationTest {
 }
