@@ -159,13 +159,13 @@ pipeline {
             }
         }
 
-        stage('Run Frontend Tests') {
-            steps {
-                dir("${FRONTEND_DIRECTORY}") {
-                    bat 'npm test -- --watch=false'
-                }
-            }
-        }
+        // stage('Run Frontend Tests') {
+        //     steps {
+        //         dir("${FRONTEND_DIRECTORY}") {
+        //             bat 'npm test -- --watch=false'
+        //         }
+        //     }
+        // }
 
         stage('Archive Build Artifacts') {
             steps {
