@@ -231,7 +231,7 @@ pipeline {
                         ssh -i "%SSH_KEY%" ^
                             -o StrictHostKeyChecking=no ^
                             %SSH_USER%@%EC2_HOST% ^
-                            "pkill -f todo.jar || true; nohup java -jar /home/%SSH_USER%/todo.jar > /home/%SSH_USER%/todo.log 2>&1 &"
+                            "pkill -f '[t]odo.jar' || true; nohup java -jar /home/%SSH_USER%/todo.jar > /home/%SSH_USER%/todo.log 2>&1 < /dev/null &"
                     '''
                 }
             }
