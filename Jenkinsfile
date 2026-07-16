@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    /*
-     * IMPORTANT:
-     * This must exactly match the NodeJS installation name under:
-     * Manage Jenkins -> Tools -> NodeJS installations
-     */
     tools {
         nodejs 'NodeJS'
     }
@@ -13,20 +8,20 @@ pipeline {
     environment {
         BACKEND_DIRECTORY = 'todo'
         FRONTEND_DIRECTORY = 'angular_todo'
+        FRONTEND_URL = 'http://localhost:4200/login'
 
         /*
-         * Deployment configuration — not used yet.
-         *
-         * AWS_REGION = 'us-east-1'
-         * S3_BUCKET = 'water-tribe-angular-app'
-         * EC2_HOST = '18.209.57.58'
-         * EC2_USER = 'ec2-user'
-         */
+        AWS_REGION = 'us-east-1'
+        S3_BUCKET = 'water-tribe-angular-app'
+        EC2_HOST = '18.209.57.58'
+        EC2_USER = 'ec2-user'
+        */
     }
 
     options {
         timestamps()
         disableConcurrentBuilds()
+
         buildDiscarder(
             logRotator(
                 numToKeepStr: '10',
@@ -38,15 +33,13 @@ pipeline {
     stages {
         stage('Checkout Source Code') {
             steps {
-                echo 'Checking out source code from GitHub...'
+                echo 'Checking out source code...'
                 checkout scm
             }
         }
 
-        stage('Verify Build Environment') {
+        stage('Verify Environment') {
             steps {
-                echo 'Checking Java, Node.js and npm versions...'
-
                 bat '''
                     java -version
                     node --version
@@ -59,19 +52,100 @@ pipeline {
             }
         }
 
-        stage('Backend Clean') {
+        stage('Clean Previous Builds') {
             steps {
-                echo 'Cleaning previous backend build files...'
-
                 dir("${BACKEND_DIRECTORY}") {
                     bat 'gradlew.bat clean --no-daemon'
+                }
+
+                dir("${FRONTEND_DIRECTORY}") {
+                    bat '''
+                        if exist dist rmdir /S /Q dist
+                    '''
                 }
             }
         }
 
-        stage('Backend Tests') {
+        stage('Install Frontend Dependencies') {
             steps {
-                echo 'Running Spring Boot, JUnit, Cucumber, REST Assured and other Gradle tests...'
+                dir("${FRONTEND_DIRECTORY}") {
+                    bat 'npm ci'
+                }
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                dir("${FRONTEND_DIRECTORY}") {
+                    bat 'npm run build -- --configuration production'
+                }
+            }
+        }
+
+        stage('Start Frontend') {
+            steps {
+                echo 'Starting Angular frontend on port 4200...'
+
+                dir("${FRONTEND_DIRECTORY}") {
+                    powershell '''
+                        $process = Start-Process `
+                            -FilePath "cmd.exe" `
+                            -ArgumentList "/c", "npm start -- --host 127.0.0.1 --port 4200" `
+                            -WorkingDirectory $PWD `
+                            -RedirectStandardOutput "frontend.log" `
+                            -RedirectStandardError "frontend-error.log" `
+                            -PassThru
+
+                        $process.Id | Out-File "frontend.pid" -Encoding ascii
+                        Write-Host "Frontend PID: $($process.Id)"
+                    '''
+                }
+            }
+        }
+
+        stage('Wait for Frontend') {
+            steps {
+                echo 'Waiting for Angular to become available...'
+
+                powershell '''
+                    $url = $env:FRONTEND_URL
+                    $maximumAttempts = 90
+
+                    for ($attempt = 1; $attempt -le $maximumAttempts; $attempt++) {
+                        try {
+                            $response = Invoke-WebRequest `
+                                -Uri $url `
+                                -UseBasicParsing `
+                                -TimeoutSec 5 `
+                                -ErrorAction Stop
+
+                            Write-Host "Frontend is ready. Status: $($response.StatusCode)"
+                            exit 0
+                        }
+                        catch {
+                            Write-Host "Frontend not ready. Attempt $attempt of $maximumAttempts"
+                            Start-Sleep -Seconds 2
+                        }
+                    }
+
+                    Write-Host "Frontend failed to start."
+
+                    if (Test-Path "angular_todo\\frontend.log") {
+                        Get-Content "angular_todo\\frontend.log" -Tail 100
+                    }
+
+                    if (Test-Path "angular_todo\\frontend-error.log") {
+                        Get-Content "angular_todo\\frontend-error.log" -Tail 100
+                    }
+
+                    exit 1
+                '''
+            }
+        }
+
+        stage('Run All Backend Tests') {
+            steps {
+                echo 'Running all backend, API, Cucumber and Selenium tests...'
 
                 dir("${BACKEND_DIRECTORY}") {
                     bat 'gradlew.bat test --no-daemon'
@@ -89,58 +163,24 @@ pipeline {
             }
         }
 
-        stage('Backend Build') {
+        stage('Build Backend') {
             steps {
-                echo 'Building the Spring Boot executable JAR...'
-
                 dir("${BACKEND_DIRECTORY}") {
-                    /*
-                     * Tests already ran in the previous stage,
-                     * so we skip running them a second time.
-                     */
                     bat 'gradlew.bat bootJar -x test --no-daemon'
                 }
             }
         }
 
-        stage('Frontend Install Dependencies') {
+        stage('Run Frontend Tests') {
             steps {
-                echo 'Installing Angular dependencies from package-lock.json...'
-
                 dir("${FRONTEND_DIRECTORY}") {
-                    bat 'npm ci'
-                }
-            }
-        }
-
-        stage('Frontend Tests') {
-            steps {
-                echo 'Running Angular unit tests with Vitest...'
-
-                dir("${FRONTEND_DIRECTORY}") {
-                    /*
-                     * --watch=false makes the test process finish after one run,
-                     * which is required for Jenkins.
-                     */
                     bat 'npm test -- --watch=false'
-                }
-            }
-        }
-
-        stage('Frontend Build') {
-            steps {
-                echo 'Creating the production Angular build...'
-
-                dir("${FRONTEND_DIRECTORY}") {
-                    bat 'npm run build -- --configuration production'
                 }
             }
         }
 
         stage('Archive Build Artifacts') {
             steps {
-                echo 'Saving backend and frontend build artifacts in Jenkins...'
-
                 archiveArtifacts(
                     artifacts: 'todo/build/libs/*.jar',
                     fingerprint: true,
@@ -152,100 +192,91 @@ pipeline {
                     fingerprint: true,
                     allowEmptyArchive: false
                 )
+
+                archiveArtifacts(
+                    artifacts: 'angular_todo/frontend*.log',
+                    allowEmptyArchive: true
+                )
             }
         }
 
         /*
-         * ============================================================
-         * DEPLOYMENT STAGES — COMMENTED OUT FOR NOW
-         * ============================================================
-         *
-         * Before enabling these stages, you need:
-         *
-         * 1. AWS CLI installed on the Jenkins computer.
-         * 2. AWS Access Key ID and Secret Access Key stored in Jenkins.
-         * 3. The EC2 SSH private key stored in Jenkins.
-         * 4. An application directory created on EC2.
-         * 5. The correct Angular dist output directory confirmed.
-         *
-         * Remove the surrounding block comment when ready.
-         */
-
-        /*
         stage('Deploy Frontend to S3') {
             steps {
-                echo 'Deploying Angular frontend to S3...'
-
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'aws-credentials',
-                        usernameVariable: 'AWS_ACCESS_KEY_ID',
-                        passwordVariable: 'AWS_SECRET_ACCESS_KEY'
-                    )
-                ]) {
-                    bat """
-                        aws s3 sync ^
-                        angular_todo\\dist\\angular-todo\\browser ^
-                        s3://${S3_BUCKET} ^
-                        --delete ^
-                        --region ${AWS_REGION}
-                    """
-                }
+                // Deployment disabled for now
             }
         }
 
         stage('Deploy Backend to EC2') {
             steps {
-                echo 'Deploying Spring Boot backend to EC2...'
-
-                sshagent(credentials: ['ec2-ssh-key']) {
-                    bat """
-                        scp -o StrictHostKeyChecking=no ^
-                        todo\\build\\libs\\todo-0.0.1-SNAPSHOT.jar ^
-                        ${EC2_USER}@${EC2_HOST}:/home/${EC2_USER}/app/todo.jar
-
-                        ssh -o StrictHostKeyChecking=no ^
-                        ${EC2_USER}@${EC2_HOST} ^
-                        "pkill -f todo.jar || true; nohup java -jar /home/${EC2_USER}/app/todo.jar > /home/${EC2_USER}/app/todo.log 2>&1 &"
-                    """
-                }
+                // Deployment disabled for now
             }
         }
         */
     }
 
     post {
+        always {
+            echo 'Stopping Angular frontend...'
+
+            powershell '''
+                $ErrorActionPreference = "Continue"
+
+                if (Test-Path "angular_todo\\frontend.pid") {
+                    $processId = Get-Content "angular_todo\\frontend.pid" |
+                        Select-Object -First 1
+
+                    if ($processId) {
+                        taskkill /PID $processId /T /F 2>$null
+                    }
+
+                    Remove-Item "angular_todo\\frontend.pid" `
+                        -Force `
+                        -ErrorAction SilentlyContinue
+                }
+
+                $connections = Get-NetTCPConnection `
+                    -LocalPort 4200 `
+                    -State Listen `
+                    -ErrorAction SilentlyContinue
+
+                foreach ($connection in $connections) {
+                    taskkill /PID $connection.OwningProcess /T /F 2>$null
+                }
+
+                exit 0
+            '''
+
+            archiveArtifacts(
+                artifacts: 'angular_todo/frontend*.log',
+                allowEmptyArchive: true
+            )
+
+            echo "Pipeline completed with status: ${currentBuild.currentResult}"
+        }
+
         success {
             echo '''
-            ==================================================
+            ==========================================
             PIPELINE SUCCESSFUL
-            ==================================================
-            Backend tests: Passed
-            Backend JAR: Built and archived
-            Frontend tests: Passed
-            Frontend application: Built and archived
-            Deployment: Currently disabled
-            ==================================================
+            ==========================================
+            Angular frontend started successfully
+            All backend/Cucumber tests passed
+            Frontend tests passed
+            Backend and frontend builds completed
+            Deployment is disabled
+            ==========================================
             '''
         }
 
         failure {
             echo '''
-            ==================================================
+            ==========================================
             PIPELINE FAILED
-            ==================================================
-            Open this build and select "Console Output" to see
-            which command or test failed.
-            ==================================================
+            ==========================================
+            Check Console Output and frontend logs.
+            ==========================================
             '''
-        }
-
-        unstable {
-            echo 'The pipeline completed, but one or more test results were unstable.'
-        }
-
-        always {
-            echo "Pipeline completed with status: ${currentBuild.currentResult}"
         }
     }
 }
