@@ -220,6 +220,9 @@ pipeline {
                     )
                 ]) {
                     bat '''
+                        icacls "%SSH_KEY%" /inheritance:r
+                        icacls "%SSH_KEY%" /grant:r "SYSTEM:R"
+
                         scp -i "%SSH_KEY%" ^
                             -o StrictHostKeyChecking=no ^
                             todo\\build\\libs\\todo-0.0.1-SNAPSHOT.jar ^
