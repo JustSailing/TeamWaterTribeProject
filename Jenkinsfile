@@ -212,15 +212,23 @@ pipeline {
             steps {
                 echo 'Deploying Spring Boot backend to EC2...'
 
-                sshagent(credentials: ['ec2-ssh-key']) {
+                withCredentials([
+                    sshUserPrivateKey(
+                        credentialsId: 'ec2-ssh-key',
+                        keyFileVariable: 'SSH_KEY',
+                        usernameVariable: 'SSH_USER'
+                    )
+                ]) {
                     bat '''
-                        scp -o StrictHostKeyChecking=no ^
-                        todo\\build\\libs\\todo-0.0.1-SNAPSHOT.jar ^
-                        %EC2_USER%@%EC2_HOST%:/home/%EC2_USER%/todo.jar
+                        scp -i "%SSH_KEY%" ^
+                            -o StrictHostKeyChecking=no ^
+                            todo\\build\\libs\\todo-0.0.1-SNAPSHOT.jar ^
+                            %SSH_USER%@%EC2_HOST%:/home/%SSH_USER%/todo.jar
 
-                        ssh -o StrictHostKeyChecking=no ^
-                        %EC2_USER%@%EC2_HOST% ^
-                        "pkill -f todo.jar || true; nohup java -jar /home/%EC2_USER%/todo.jar > /home/%EC2_USER%/todo.log 2>&1 &"
+                        ssh -i "%SSH_KEY%" ^
+                            -o StrictHostKeyChecking=no ^
+                            %SSH_USER%@%EC2_HOST% ^
+                            "pkill -f todo.jar || true; nohup java -jar /home/%SSH_USER%/todo.jar > /home/%SSH_USER%/todo.log 2>&1 &"
                     '''
                 }
             }
