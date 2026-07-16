@@ -90,7 +90,6 @@ pipeline {
                     withEnv(['JENKINS_NODE_COOKIE=dontKillFrontend']) {
                         bat '''
                             start "" /B cmd /C "npm start -- --host 127.0.0.1 --port 4200 > frontend.log 2>&1"
-                            timeout /T 5 /NOBREAK
                         '''
                     }
                 }
@@ -131,7 +130,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Run All Backend Tests') {
             steps {
                 echo 'Running all backend, API, Cucumber and Selenium tests...'
