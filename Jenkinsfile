@@ -219,7 +219,7 @@ pipeline {
                         usernameVariable: 'SSH_USER'
                     )
                 ]) {
-                    bat '''
+                    bat """
                         icacls "%SSH_KEY%" /inheritance:r
                         icacls "%SSH_KEY%" /grant:r "SYSTEM:R"
 
@@ -231,8 +231,20 @@ pipeline {
                         ssh -i "%SSH_KEY%" ^
                             -o StrictHostKeyChecking=no ^
                             %SSH_USER%@%EC2_HOST% ^
-                            "pkill -f '[t]odo.jar' || true; nohup java -jar /home/%SSH_USER%/todo.jar > /home/%SSH_USER%/todo.log 2>&1 < /dev/null &"
-                    '''
+                            "pkill -f '[t]odo.jar' || true"
+
+                        ssh -i "%SSH_KEY%" ^
+                            -o StrictHostKeyChecking=no ^
+                            %SSH_USER%@%EC2_HOST% ^
+                            "nohup java -jar /home/%SSH_USER%/todo.jar > /home/%SSH_USER%/todo.log 2>&1 < /dev/null &"
+
+                        timeout /t 10 /nobreak
+
+                        ssh -i "%SSH_KEY%" ^
+                            -o StrictHostKeyChecking=no ^
+                            %SSH_USER%@%EC2_HOST% ^
+                            "ps -ef | grep '[t]odo.jar'"
+                    """
                 }
             }
         }
