@@ -201,6 +201,9 @@ pipeline {
 
         stage('Verify Backend Process') {
             steps {
+                echo 'Waiting for the backend to start...'
+                sleep time: 15, unit: 'SECONDS'
+
                 echo 'Confirming that todo.jar is running on EC2...'
 
                 withCredentials([
@@ -210,12 +213,20 @@ pipeline {
                         usernameVariable: 'SSH_USER'
                     )
                 ]) {
-                    bat """
+                    bat '''
+                        echo Securing temporary SSH private key...
+
+                        icacls "%SSH_KEY%" /inheritance:r
+                        icacls "%SSH_KEY%" /remove:g "BUILTIN\\Users"
+                        icacls "%SSH_KEY%" /grant:r "SYSTEM:R"
+
+                        echo Checking the backend process...
+
                         ssh -i "%SSH_KEY%" ^
                             -o StrictHostKeyChecking=no ^
                             %SSH_USER%@%EC2_HOST% ^
                             "ps -ef | grep '[t]odo.jar'"
-                    """
+                    '''
                 }
             }
         }
