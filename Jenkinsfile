@@ -12,7 +12,7 @@ pipeline {
 
         AWS_REGION = 'us-east-1'
         S3_BUCKET = 'water-tribe-angular-app'
-        EC2_HOST = '18.209.57.58'
+        EC2_HOST = '54.221.103.90'
         EC2_USER = 'ec2-user'
     }
 
