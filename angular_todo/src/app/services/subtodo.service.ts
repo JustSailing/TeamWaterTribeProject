@@ -8,7 +8,7 @@ import { SubTodo } from '../models/subtodo.model';
 })
 export class SubTodoService {
 
-  private readonly apiUrl = 'http://localhost:8080/api/main-todos';
+  private readonly apiUrl = 'http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/api/main-todos';
   private http = inject(HttpClient);
 
   getAllSubTodos(parent_id: number): Observable<SubTodo[]> {

@@ -52,7 +52,7 @@ export class Register {
     //              rather than just the parsed body
     //     responseType: 'text' tells Angular to treat the response body as plain text
     //                   instead of attempting to parse it as JSON
-    this.http.post('http://localhost:8080/register', body, { responseType: 'text' }).subscribe({
+    this.http.post('http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/register', body, { responseType: 'text' }).subscribe({
       next: () => {
         this.successMessage.set('Registration successful!');
         setTimeout(() => {

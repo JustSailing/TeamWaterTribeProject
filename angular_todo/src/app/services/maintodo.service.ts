@@ -8,7 +8,7 @@ import { MainTodo } from '../models/maintodo.model';
 })
 export class MainTodoService {
 
-  private apiUrl = 'http://localhost:8080/api/main-todos';
+  private apiUrl = 'http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/api/main-todos';
 
   constructor(private http: HttpClient) {}
 
