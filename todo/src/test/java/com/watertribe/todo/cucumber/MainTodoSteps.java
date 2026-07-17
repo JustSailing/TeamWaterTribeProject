@@ -1,10 +1,7 @@
 package com.watertribe.todo.cucumber;
 
-import com.watertribe.todo.cucumber.pages.LoginPage;
-import com.watertribe.todo.cucumber.pages.RegistrationPage;
 import com.watertribe.todo.cucumber.pages.TodoPage;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

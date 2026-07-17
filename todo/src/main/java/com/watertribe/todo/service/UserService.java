@@ -4,7 +4,6 @@ import com.watertribe.todo.entity.User;
 import com.watertribe.todo.exception.LoginFailure;
 import com.watertribe.todo.exception.RegistrationFailure;
 import com.watertribe.todo.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;

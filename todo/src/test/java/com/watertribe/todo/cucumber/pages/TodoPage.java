@@ -176,14 +176,6 @@ public class TodoPage {
         ExpectedConditions.visibilityOfElementLocated(SUBTASK_INPUT));
   }
 
-  private void waitForAngularRender() {
-    try {
-      Thread.sleep(300);
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-    }
-  }
-
   public void typeInSubtaskInput(String text) {
     WebElement input = wait.until(
         ExpectedConditions.elementToBeClickable(SUBTASK_INPUT));
