@@ -137,8 +137,13 @@ pipeline {
                     )
                 ]) {
                     bat """
+                        echo Securing temporary SSH private key...
+
+                        attrib -R "%SSH_KEY%"
                         icacls "%SSH_KEY%" /inheritance:r
+                        icacls "%SSH_KEY%" /remove:g "BUILTIN\\Users"
                         icacls "%SSH_KEY%" /grant:r "SYSTEM:R"
+                        attrib +R "%SSH_KEY%"
 
                         echo Copying the new JAR to EC2...
 
