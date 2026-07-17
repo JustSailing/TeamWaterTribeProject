@@ -1,13 +1,10 @@
 package com.watertribe.todo.cucumber;
 
-import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import com.watertribe.todo.cucumber.pages.LoginPage;
 import com.watertribe.todo.cucumber.pages.RegistrationPage;

@@ -1,18 +1,14 @@
 package com.watertribe.todo.cucumber;
 
-import com.watertribe.todo.cucumber.pages.LoginPage;
 import com.watertribe.todo.cucumber.pages.TodoPage;
 import com.watertribe.todo.repository.MainTodoRepository;
 import com.watertribe.todo.repository.SubTaskRepository;
 import com.watertribe.todo.repository.UserRepository;
 import com.watertribe.todo.service.UserService;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.logging.LogType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
