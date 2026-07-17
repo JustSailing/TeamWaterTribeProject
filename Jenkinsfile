@@ -211,7 +211,7 @@ pipeline {
                 ]) {
                     bat '''
                         aws s3 sync ^
-                            angular_todo\\dist\\angular_todo ^
+                            angular_todo\\dist\\angular_todo\\browser ^
                             s3://%S3_BUCKET% ^
                             --delete ^
                             --region %AWS_REGION%
