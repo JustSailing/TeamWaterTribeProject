@@ -2,13 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MainTodo } from '../models/maintodo.model';
+import { environment } from '../../enviornments/enviornment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainTodoService {
 
-  private apiUrl = 'http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/api/main-todos';
+  private baseUrl = environment.apiUrl;
+  private apiUrl = `${this.baseUrl}/api/main-todos`;
 
   constructor(private http: HttpClient) {}
 

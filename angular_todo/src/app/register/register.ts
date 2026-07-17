@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { environment } from '../../enviornments/enviornment';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class Register {
   // Inject HttpClient to make HTTP requests to the backend
   private http = inject(HttpClient);
   private router = inject(Router);
+  private baseUrl = environment.apiUrl;
 
   // A FormGroup is a collection of FormControls that represents the entire form.
   // It tracks the value and validation state of each child control as a single unit.
@@ -52,7 +54,7 @@ export class Register {
     //              rather than just the parsed body
     //     responseType: 'text' tells Angular to treat the response body as plain text
     //                   instead of attempting to parse it as JSON
-    this.http.post('http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/register', body, { responseType: 'text' }).subscribe({
+    this.http.post(`${this.baseUrl}/register`, body, { responseType: 'text' }).subscribe({
       next: () => {
         this.successMessage.set('Registration successful!');
         setTimeout(() => {

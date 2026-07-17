@@ -1,18 +1,20 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../enviornments/enviornment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
+  private baseUrl = environment.apiUrl;
 
   token = signal<string | null>(this.getStoredToken());
   isAuthenticated = computed(() => this.token() !== null);
 
   login(username: string, password: string) {
     return this.http.post(
-      'http://ec2-54-221-103-90.compute-1.amazonaws.com:8080/login',
+      `${this.baseUrl}/login`,
       { username, password },
       { responseType: 'text' },
     );
